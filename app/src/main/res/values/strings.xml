@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ShoppingApp</string>
+    <string name="marka_r_n_veya_kategori_ara">Marka, ürün veya kategori ara</string>
 </resources>
