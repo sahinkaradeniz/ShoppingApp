@@ -28,6 +28,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/shadowbackground"
+                android:hint="@string/marka_r_n_veya_kategori_ara"
+                app:hintAnimationEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +38,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/marka_r_n_veya_kategori_ara" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
@@ -56,8 +57,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
-        android:layout_height="671dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
@@ -89,7 +91,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvHome"
                 android:layout_width="match_parent"
-                android:layout_height="800dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
