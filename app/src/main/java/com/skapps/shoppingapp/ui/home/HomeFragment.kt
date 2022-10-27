@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.HomeParentRcvAdapter
@@ -38,6 +40,16 @@ class HomeFragment : Fragment() {
         homeParentRcvAdapter= HomeParentRcvAdapter(productModelList)
         binding.rcvHome.layoutManager= LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL,false)
         binding.rcvHome.adapter=homeParentRcvAdapter
+        binding.textInputLayout.setStartIconOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
+
+        binding.editText.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus){
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            }
+        }
         return binding.root
     }
 

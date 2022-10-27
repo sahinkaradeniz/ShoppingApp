@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.SearchHistoryRcvAdapter
+import com.skapps.shoppingapp.adapter.SearchProductAdapter
 import com.skapps.shoppingapp.databinding.FragmentSearchBinding
+import com.skapps.shoppingapp.model.Product
 import com.skapps.shoppingapp.model.SearchHistory
 
 class SearchFragment : Fragment() {
@@ -17,6 +20,7 @@ class SearchFragment : Fragment() {
     private lateinit var binding:FragmentSearchBinding
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchHistoryRcvAdapter:SearchHistoryRcvAdapter
+    private lateinit var searchProductAdapter: SearchProductAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +44,20 @@ class SearchFragment : Fragment() {
             searchHistoryRcvAdapter=SearchHistoryRcvAdapter(historyList)
             layoutManager=LinearLayoutManager(binding.root.context,LinearLayoutManager.HORIZONTAL,false)
             adapter=searchHistoryRcvAdapter
+        }
+        val product= Product(getString(R.string.test_string_ayakkabi),"299.99",4.6)
+        val productList=ArrayList<Product>()
+        productList.add(product)
+        productList.add(product)
+        productList.add(product)
+        productList.add(product)
+        productList.add(product)
+        productList.add(product)
+        productList.add(product)
+        binding.rcvSearchProduct.apply {
+            searchProductAdapter= SearchProductAdapter(productList)
+            layoutManager=GridLayoutManager(binding.root.context,2)
+            adapter=searchProductAdapter
         }
     }
 

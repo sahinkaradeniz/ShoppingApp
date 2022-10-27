@@ -3,9 +3,7 @@ package com.skapps.shoppingapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.skapps.shoppingapp.databinding.FragmentSearchBinding
 import com.skapps.shoppingapp.databinding.RowHistorySearchBinding
-import com.skapps.shoppingapp.model.Product
 import com.skapps.shoppingapp.model.SearchHistory
 
 class SearchHistoryRcvAdapter(private var productList:ArrayList<SearchHistory>):RecyclerView.Adapter<SearchHistoryRcvAdapter.HistoryViewHolder>() {
