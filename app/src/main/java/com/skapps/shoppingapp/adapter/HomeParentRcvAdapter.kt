@@ -1,18 +1,17 @@
-package com.skapps.shoppingapp.database
+package com.skapps.shoppingapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
-import com.skapps.shoppingapp.model.Product
 import com.skapps.shoppingapp.model.ProductModel
 
 class HomeParentRcvAdapter(private var product:List<ProductModel>):RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
     class HomeParentViewHolder(private val binding: RowParentHomeBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product: ProductModel){
             binding.parentText.text=product.title
-            val childRcvAdapter=HomeChildRcvAdapter(product.productModel)
+            val childRcvAdapter= HomeChildRcvAdapter(product.productModel)
             binding.parentRcv.layoutManager= LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
             binding.parentRcv.adapter=childRcvAdapter
         }

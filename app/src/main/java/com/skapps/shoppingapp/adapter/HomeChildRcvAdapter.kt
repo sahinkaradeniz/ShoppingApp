@@ -1,11 +1,10 @@
-package com.skapps.shoppingapp.database
+package com.skapps.shoppingapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
 import com.skapps.shoppingapp.model.Product
-import com.skapps.shoppingapp.model.ProductModel
 
 class HomeChildRcvAdapter(val productsList: List<Product>):RecyclerView.Adapter<HomeChildRcvAdapter.HomeViewHolder>(){
     class HomeViewHolder(private val binding:RowChildHomeBinding):RecyclerView.ViewHolder(binding.root) {
