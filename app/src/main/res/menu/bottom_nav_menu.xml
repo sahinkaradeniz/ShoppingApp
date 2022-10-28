@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_outline_home_24"
         android:title="Anasayfa" />
     <item
+        android:id="@+id/categoryFragment"
         android:icon="@drawable/ic_outline_grid_view_24"
         android:title="Kategoriler" />
     <item

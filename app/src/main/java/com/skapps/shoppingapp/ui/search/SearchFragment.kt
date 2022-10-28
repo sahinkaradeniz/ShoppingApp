@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.ui
+package com.skapps.shoppingapp.ui.search
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
@@ -17,7 +18,7 @@ import com.skapps.shoppingapp.model.SearchHistory
 
 class SearchFragment : Fragment() {
 
-    private lateinit var binding:FragmentSearchBinding
+    private lateinit var binding: FragmentSearchBinding
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchHistoryRcvAdapter:SearchHistoryRcvAdapter
     private lateinit var searchProductAdapter: SearchProductAdapter
@@ -58,6 +59,9 @@ class SearchFragment : Fragment() {
             searchProductAdapter= SearchProductAdapter(productList)
             layoutManager=GridLayoutManager(binding.root.context,2)
             adapter=searchProductAdapter
+        }
+        binding.backHome.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

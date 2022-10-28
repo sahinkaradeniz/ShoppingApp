@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.ui
+package com.skapps.shoppingapp.ui.search
 
 import androidx.lifecycle.ViewModel
 
