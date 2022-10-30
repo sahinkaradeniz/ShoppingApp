@@ -10,6 +10,7 @@
         android:icon="@drawable/ic_outline_grid_view_24"
         android:title="Kategoriler" />
     <item
+        android:id="@+id/cartFragment"
         android:icon="@drawable/ic_outline_shopping_cart_24"
         android:title="Sepetim" />
 </menu>

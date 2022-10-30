@@ -62,5 +62,7 @@ dependencies {
     implementation 'com.github.st235:expandablebottombar:1.5.1'
     //Custum İmageview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    // Cart basket layout
+    implementation 'com.github.yusufonderd:BasketLayout:1.0'
 
 }

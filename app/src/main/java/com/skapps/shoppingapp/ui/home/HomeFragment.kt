@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeParentRcvAdapter: HomeParentRcvAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=FragmentHomeBinding.inflate(inflater)
-        val product=Product(getString(R.string.test_string_ayakkabi),"299.99",4.6)
+        val product=Product(getString(R.string.test_string_ayakkabi),"Harley Davidson","299.99",4.6)
         val productList=ArrayList<Product>()
         productList.add(product)
         productList.add(product)

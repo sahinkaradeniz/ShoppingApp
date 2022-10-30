@@ -46,7 +46,7 @@ class SearchFragment : Fragment() {
             layoutManager=LinearLayoutManager(binding.root.context,LinearLayoutManager.HORIZONTAL,false)
             adapter=searchHistoryRcvAdapter
         }
-        val product= Product(getString(R.string.test_string_ayakkabi),"299.99",4.6)
+        val product= Product(getString(R.string.test_string_ayakkabi),"Harley Davidson","299.99",4.6)
         val productList=ArrayList<Product>()
         productList.add(product)
         productList.add(product)

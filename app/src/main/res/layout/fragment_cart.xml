@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway"
                 android:text="@string/sepetim"
-                android:textColor="@color/pie_chart_5"
+                android:textColor="@color/pie_chart_6"
                 android:textSize="19sp"
                 android:textStyle="bold|normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_cart_basket"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
