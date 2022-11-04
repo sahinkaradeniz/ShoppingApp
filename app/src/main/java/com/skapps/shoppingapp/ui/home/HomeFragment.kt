@@ -44,13 +44,18 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
 
-
+        binding.lifecycleOwner=this
         binding.editText.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
                 findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
             }
         }
         return binding.root
+    }
+    fun observeLiveData(){
+        viewModel.test.observe(viewLifecycleOwner){
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@ import com.skapps.shoppingapp.model.Category
 
 class CategoryLeftAdapter(private var categoryList:ArrayList<Category>):RecyclerView.Adapter<CategoryLeftAdapter.LeftViewHolder>() {
     class LeftViewHolder( val binding:RowCategoryLeftBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(category: Category){
+    fun bind(category: Category){
             binding.textCategoryLeft.text=category.category
         }
     }
@@ -19,7 +19,7 @@ class CategoryLeftAdapter(private var categoryList:ArrayList<Category>):Recycler
     }
 
     override fun onBindViewHolder(holder: LeftViewHolder, position: Int) {
-        holder.bind(categoryList.get(position))
+        holder.bind(categoryList.get (position))
     }
 
     override fun getItemCount(): Int {

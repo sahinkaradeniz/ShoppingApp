@@ -22,28 +22,25 @@ class CartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding= FragmentCartBinding.inflate(layoutInflater)
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        val product= Product(getString(R.string.test_string_ayakkabi),"Harley Davidson","299.99",4.6)
-        val basket=Basket("id",product)
-        val basketList=ArrayList<Basket>()
-            basketList.add(basket)
-            basketList.add(basket)
-            basketList.add(basket)
-            basketList.add(basket)
-            basketList.add(basket)
-            basketList.add(basket)
-            basketList.add(basket)
-        binding.rcvCartBasket.apply {
-            cartBasketAdapter=CartBasketAdapter(basketList)
-            adapter=cartBasketAdapter
-            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        observeLiveData()
+        binding.lifecycleOwner=this
+        viewModel.getList()
+    }
+    fun observeLiveData(){
+        viewModel.basketLis.observe(viewLifecycleOwner){
+            binding.rcvCartBasket.apply {
+                cartBasketAdapter=CartBasketAdapter(it)
+                adapter=cartBasketAdapter
+                layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            }
         }
     }
 

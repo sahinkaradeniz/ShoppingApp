@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,38 +25,33 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding=FragmentCategoryBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val category=Category("1","Outdoor Ayakkabı","null")
-        val clist=ArrayList<Category>()
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        clist.add(category)
-        viewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
-        binding.leftRcvCategory.apply {
-            categoryLeftAdapter= CategoryLeftAdapter(clist)
-            adapter=categoryLeftAdapter
-            layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-            setHasFixedSize(true)
-        }
-        binding.rightRcvCategory.apply {
-            categoryRightAdapter= CategoryRightAdapter(clist)
-            adapter=categoryRightAdapter
-            layoutManager=GridLayoutManager(requireContext(),2)
-            setHasFixedSize(true)
-        }
+        binding=FragmentCategoryBinding.inflate(layoutInflater,container,false)
         binding.editTextCategory.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
                 findNavController().navigate(R.id.action_categoryFragment_to_searchFragment)
+            }
+        }
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
+        binding.categoryViewModel=viewModel
+    }
+    private fun observeLiveData(){
+        viewModel.categoryList.observe(viewLifecycleOwner){
+            binding.rightRcvCategory.apply {
+                categoryRightAdapter= CategoryRightAdapter(it)
+                adapter=categoryRightAdapter
+                layoutManager=GridLayoutManager(requireContext(),2)
+                setHasFixedSize(true)
+            }
+            binding.leftRcvCategory.apply {
+                categoryLeftAdapter= CategoryLeftAdapter(it)
+                adapter=categoryLeftAdapter
+                layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+                setHasFixedSize(true)
             }
         }
     }
