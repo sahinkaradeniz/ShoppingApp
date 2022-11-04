@@ -65,5 +65,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     // Cart basket layout
     implementation 'com.github.yusufonderd:BasketLayout:1.0'
+    //Rating Bar
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
 
 }
