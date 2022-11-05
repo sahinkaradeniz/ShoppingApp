@@ -20,34 +20,36 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
     private lateinit var viewModel: SearchViewModel
-    private lateinit var searchHistoryRcvAdapter:SearchHistoryRcvAdapter
+    private lateinit var searchHistoryRcvAdapter: SearchHistoryRcvAdapter
     private lateinit var searchProductAdapter: SearchProductAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentSearchBinding.inflate(inflater)
+        binding = FragmentSearchBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        val history=SearchHistory("1","Ceket")
-        val history2=SearchHistory("1","Ayakkabı ipi")
-        val historyList=ArrayList<SearchHistory>()
+        val history = SearchHistory("1", "Ceket")
+        val history2 = SearchHistory("1", "Ayakkabı ipi")
+        val historyList = ArrayList<SearchHistory>()
         historyList.add(history)
         historyList.add(history2)
         historyList.add(history)
         historyList.add(history2)
         historyList.add(history)
         binding.rcvSearchHistory.apply {
-            searchHistoryRcvAdapter=SearchHistoryRcvAdapter(historyList)
-            layoutManager=LinearLayoutManager(binding.root.context,LinearLayoutManager.HORIZONTAL,false)
-            adapter=searchHistoryRcvAdapter
+            searchHistoryRcvAdapter = SearchHistoryRcvAdapter(historyList)
+            layoutManager =
+                LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = searchHistoryRcvAdapter
         }
-        val product= Product(getString(R.string.test_string_ayakkabi),"Harley Davidson","299.99",4.6)
-        val productList=ArrayList<Product>()
+        val product =
+            Product(getString(R.string.test_string_ayakkabi), "Harley Davidson", "299.99", 4.6)
+        val productList = ArrayList<Product>()
         productList.add(product)
         productList.add(product)
         productList.add(product)
@@ -56,13 +58,13 @@ class SearchFragment : Fragment() {
         productList.add(product)
         productList.add(product)
         binding.rcvSearchProduct.apply {
-            searchProductAdapter= SearchProductAdapter(productList)
-            layoutManager=GridLayoutManager(binding.root.context,2)
-            adapter=searchProductAdapter
+            searchProductAdapter = SearchProductAdapter(productList)
+            layoutManager = GridLayoutManager(binding.root.context, 2)
+            adapter = searchProductAdapter
         }
         binding.backHome.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment2)
         }
-    }
 
+    }
 }

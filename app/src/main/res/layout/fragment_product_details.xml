@@ -70,7 +70,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:context=".ui.product.ProductDetailsFragment">
+                tools:context=".ui.details.ProductDetailsFragment">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/appCompatImageView"
@@ -99,6 +99,7 @@
                 </androidx.appcompat.widget.AppCompatImageButton>
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/backButtonDetails"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -284,7 +285,8 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="@+id/textView11"
                         app:layout_constraintEnd_toEndOf="@+id/imageButton4"
-                        app:layout_constraintTop_toTopOf="@+id/textView11" />
+                        app:layout_constraintTop_toTopOf="@+id/textView11"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ImageButton
                         android:id="@+id/imageButton6"
@@ -298,7 +300,6 @@
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -310,13 +311,60 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Ürün Yorumları"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/raleway"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView6"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="24dp"
+                        app:cardCornerRadius="16dp"
+                        android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/rcvProductComment">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Tüm Yorumlar"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold"
+
+                            android:textAlignment="center"
+                            android:textSize="16sp">
+
+                        </TextView>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcvProductComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13"
+                        app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_searchFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_productDetailsFragment2"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -52,6 +55,6 @@
         android:label="CartFragment" />
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.skapps.shoppingapp.ui.product.ProductDetailsFragment"
+        android:name="com.skapps.shoppingapp.ui.details.ProductDetailsFragment"
         android:label="ProductDetailsFragment" />
 </navigation>
