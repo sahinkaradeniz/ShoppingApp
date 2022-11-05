@@ -22,45 +22,32 @@ class HomeFragment : Fragment() {
     private lateinit var homeParentRcvAdapter: HomeParentRcvAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=FragmentHomeBinding.inflate(inflater)
-        val product=Product(getString(R.string.test_string_ayakkabi),"Harley Davidson","299.99",4.6)
-        val productList=ArrayList<Product>()
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        val productModel=ProductModel(2,"Ayakkabılar",productList)
-        val productModelList=ArrayList<ProductModel>()
-        productModelList.add(productModel)
-        productModelList.add(productModel)
-        productModelList.add(productModel)
-        productModelList.add(productModel)
-        homeParentRcvAdapter= HomeParentRcvAdapter(productModelList)
-        binding.rcvHome.layoutManager= LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL,false)
-        binding.rcvHome.adapter=homeParentRcvAdapter
-        binding.textInputLayout.setStartIconOnClickListener {
-                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }
-
         binding.lifecycleOwner=this
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.editText.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
                 findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
             }
         }
-        return binding.root
-    }
-    fun observeLiveData(){
-        viewModel.test.observe(viewLifecycleOwner){
-
+        binding.textInputLayout.setStartIconOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel.products.observe(viewLifecycleOwner){
+            binding.rcvHome.apply {
+                homeParentRcvAdapter=HomeParentRcvAdapter(it){ product ->
+                    val bundle=Bundle()
+                    bundle.putSerializable("product",product)
+                    findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+                }
+                adapter=homeParentRcvAdapter
+                layoutManager=LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL,false)
+            }
+        }
 
     }
 

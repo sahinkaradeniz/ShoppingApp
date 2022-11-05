@@ -1,12 +1,13 @@
 package com.skapps.shoppingapp.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowProductCommentBinding
 import com.skapps.shoppingapp.model.Comment
 
-class ProductCommentAdapter(val commentList:ArrayList<Comment>): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
+class ProductCommentAdapter(val commentList:ArrayList<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
     class CommentViewHolder(val binding:RowProductCommentBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(comment: Comment){
                 binding.textProductComment.text=comment.comment
@@ -16,10 +17,14 @@ class ProductCommentAdapter(val commentList:ArrayList<Comment>): RecyclerView.Ad
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val rcvComment=RowProductCommentBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CommentViewHolder(rcvComment)
+        return CommentViewHolder(rcvComment,)
     }
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         holder.bind(commentList.get(position))
+        holder.itemView.setOnClickListener {
+            onItemClick(commentList.get(position))
+        }
+
     }
     override fun getItemCount(): Int {
         if (commentList.size>4){
@@ -28,4 +33,5 @@ class ProductCommentAdapter(val commentList:ArrayList<Comment>): RecyclerView.Ad
             return commentList.size
         }
     }
+
 }

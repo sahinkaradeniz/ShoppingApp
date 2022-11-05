@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
+import com.skapps.shoppingapp.model.Product
 import com.skapps.shoppingapp.model.ProductModel
 
-class HomeParentRcvAdapter(private var product:List<ProductModel>):RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
+class HomeParentRcvAdapter(private var productList:List<ProductModel>,private var onItemClick:(product:Product) -> Unit):RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
     class HomeParentViewHolder(private val binding: RowParentHomeBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product: ProductModel){
             binding.parentText.text=product.title
@@ -23,10 +24,13 @@ class HomeParentRcvAdapter(private var product:List<ProductModel>):RecyclerView.
     }
 
     override fun onBindViewHolder(holder: HomeParentViewHolder, position: Int) {
-        holder.bind(product.get(position))
+        holder.bind(productList.get(position))
+        holder.itemView.setOnClickListener{
+            onItemClick(productList.get(position).productModel.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
-      return  product.size
+      return  productList.size
     }
 }
