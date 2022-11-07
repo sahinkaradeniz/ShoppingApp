@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/commentDetailsFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -56,5 +56,13 @@
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.skapps.shoppingapp.ui.details.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" />
+        android:label="ProductDetailsFragment" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_commentDetailsFragment"
+            app:destination="@id/commentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDetailsFragment"
+        android:name="com.skapps.shoppingapp.ui.commentDetails.CommentDetailsFragment"
+        android:label="CommentDetailsFragment" />
 </navigation>

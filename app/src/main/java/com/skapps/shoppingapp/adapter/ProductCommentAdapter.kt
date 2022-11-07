@@ -1,13 +1,12 @@
 package com.skapps.shoppingapp.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowProductCommentBinding
 import com.skapps.shoppingapp.model.Comment
 
-class ProductCommentAdapter(val commentList:ArrayList<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
+class ProductCommentAdapter(val type:Int,val commentList:ArrayList<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
     class CommentViewHolder(val binding:RowProductCommentBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(comment: Comment){
                 binding.textProductComment.text=comment.comment
@@ -27,11 +26,16 @@ class ProductCommentAdapter(val commentList:ArrayList<Comment>,private val onIte
 
     }
     override fun getItemCount(): Int {
-        if (commentList.size>4){
-            return 4
+        if (type==1){
+            if (commentList.size>4){
+                return 4
+            }else{
+                return commentList.size
+            }
         }else{
             return commentList.size
         }
+
     }
 
 }

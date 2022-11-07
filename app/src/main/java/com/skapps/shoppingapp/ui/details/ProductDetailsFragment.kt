@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.ProductCommentAdapter
@@ -32,11 +33,22 @@ class ProductDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ProductDetailsViewModel::class.java)
         viewModel.setProduct(product)
         observeLiveData()
+        binding.productCommentText.setOnClickListener {
+            val bundle=Bundle()
+            bundle.putSerializable("productid",product.name)
+            findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+        }
+        binding.productCommentText2.setOnClickListener {
+            val bundle=Bundle()
+            bundle.putSerializable("productid",product.name)
+            findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+        }
     }
+
     private fun observeLiveData(){
         viewModel.commentList.observe(viewLifecycleOwner){
             binding.rcvProductComment.apply {
-                rcvAdapter=ProductCommentAdapter(it){ comment ->
+                rcvAdapter=ProductCommentAdapter(1,it){ comment ->
                     Toast.makeText(requireContext(),"Tık",Toast.LENGTH_SHORT).show()
                 }
                 adapter=rcvAdapter

@@ -75,13 +75,14 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/appCompatImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="280dp"
+                    android:layout_height="300dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:src="@drawable/ayakkabi"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatImageView>
+                    app:layout_constraintTop_toTopOf="parent">
+                </androidx.appcompat.widget.AppCompatImageView>
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/appCompatImageButton"
@@ -108,7 +109,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageButton"
-                    tools:ignore="SpeakableTextPresentCheck"></androidx.appcompat.widget.AppCompatImageButton>
+                    tools:ignore="SpeakableTextPresentCheck">
+                </androidx.appcompat.widget.AppCompatImageButton>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
@@ -145,7 +147,8 @@
                         android:textStyle="normal|bold"
                         app:layout_constraintBottom_toBottomOf="@+id/textView7"
                         app:layout_constraintStart_toEndOf="@+id/textView7"
-                        app:layout_constraintTop_toTopOf="@+id/textView7"></TextView>
+                        app:layout_constraintTop_toTopOf="@+id/textView7">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView8"
@@ -154,7 +157,8 @@
                         android:layout_marginTop="4dp"
                         android:text="@string/test_string_ayakkabi"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"></TextView>
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+                    </TextView>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView4"
@@ -201,7 +205,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/product_comment_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
@@ -341,13 +345,13 @@
                         app:layout_constraintTop_toBottomOf="@+id/rcvProductComment">
 
                         <TextView
+                            android:id="@+id/product_comment_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Tüm Yorumlar"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
-
                             android:textAlignment="center"
                             android:textSize="16sp">
 
