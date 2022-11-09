@@ -43,7 +43,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/appCompatButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_outline_favorite_black"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -270,7 +270,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/productDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -282,13 +282,13 @@
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                     <ImageButton
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/productFeatures"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/background_radius"
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                        app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+                        app:layout_constraintEnd_toEndOf="@+id/productDescription"
                         app:layout_constraintTop_toTopOf="@+id/textView11"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -299,7 +299,7 @@
                         android:background="@drawable/background_radius"
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                        app:layout_constraintEnd_toEndOf="@+id/imageButton5"
+                        app:layout_constraintEnd_toEndOf="@+id/productFeatures"
                         app:layout_constraintTop_toTopOf="@+id/textView12"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

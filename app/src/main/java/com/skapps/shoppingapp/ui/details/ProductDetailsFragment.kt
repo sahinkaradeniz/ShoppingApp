@@ -43,6 +43,9 @@ class ProductDetailsFragment : Fragment() {
             bundle.putSerializable("productid",product.name)
             findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
         }
+        binding.productFeatures.setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)
+        }
     }
 
     private fun observeLiveData(){

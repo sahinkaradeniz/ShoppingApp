@@ -60,9 +60,17 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_commentDetailsFragment"
             app:destination="@id/commentDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productFeaturesFragment"
+            app:destination="@id/productFeaturesFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentDetailsFragment"
         android:name="com.skapps.shoppingapp.ui.commentDetails.CommentDetailsFragment"
         android:label="CommentDetailsFragment" />
+    <fragment
+        android:id="@+id/productFeaturesFragment"
+        android:name="com.skapps.shoppingapp.ui.productFeatures.ProductFeaturesFragment"
+        android:label="fragment_product_features"
+        tools:layout="@layout/fragment_product_features" />
 </navigation>
