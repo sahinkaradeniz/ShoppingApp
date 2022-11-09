@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/commentDetailsFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -17,5 +17,60 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.skapps.shoppingapp.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.skapps.shoppingapp.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_productDetailsFragment2"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.skapps.shoppingapp.ui.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.skapps.shoppingapp.ui.cart.CartFragment"
+        android:label="CartFragment" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.skapps.shoppingapp.ui.details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_commentDetailsFragment"
+            app:destination="@id/commentDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productFeaturesFragment"
+            app:destination="@id/productFeaturesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDetailsFragment"
+        android:name="com.skapps.shoppingapp.ui.commentDetails.CommentDetailsFragment"
+        android:label="CommentDetailsFragment" />
+    <fragment
+        android:id="@+id/productFeaturesFragment"
+        android:name="com.skapps.shoppingapp.ui.productFeatures.ProductFeaturesFragment"
+        android:label="fragment_product_features"
+        tools:layout="@layout/fragment_product_features" />
 </navigation>

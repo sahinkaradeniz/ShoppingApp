@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ShoppingApp</string>
     <string name="marka_r_n_veya_kategori_ara">Marka, ürün veya kategori ara</string>
+    <string name="sepete_ekle">Sepete Ekle</string>
+    <string name="test_string_ayakkabi">Harley Davidson Erkek Ayakkabı 34041-Siyah</string>
+    <string name="size_zel">Size Özel</string>
+    <string name="sepetim">Sepetim</string>
+    <string name="r_n_yorumlar">Ürün Yorumları</string>
 </resources>
