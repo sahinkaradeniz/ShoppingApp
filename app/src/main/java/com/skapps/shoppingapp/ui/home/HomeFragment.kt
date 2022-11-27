@@ -6,14 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.adapter.HomeParentRcvAdapter
 import com.skapps.shoppingapp.databinding.FragmentHomeBinding
-import com.skapps.shoppingapp.model.Product
-import com.skapps.shoppingapp.model.ProductModel
 
 class HomeFragment : Fragment() {
 
@@ -39,7 +35,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.products.observe(viewLifecycleOwner){
             binding.rcvHome.apply {
-                homeParentRcvAdapter=HomeParentRcvAdapter(it){ product ->
+                homeParentRcvAdapter= HomeParentRcvAdapter(it){ product ->
                     val bundle=Bundle()
                     bundle.putSerializable("product",product)
                     findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)

@@ -7,12 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.adapter.CartBasketAdapter
+import com.skapps.shoppingapp.ui.cart.adapter.CartBasketAdapter
 import com.skapps.shoppingapp.databinding.FragmentCartBinding
-import com.skapps.shoppingapp.databinding.RowCartDesignBinding
-import com.skapps.shoppingapp.model.Basket
-import com.skapps.shoppingapp.model.Product
 
 class CartFragment : Fragment() {
 
@@ -37,7 +33,7 @@ class CartFragment : Fragment() {
     fun observeLiveData(){
         viewModel.basketLis.observe(viewLifecycleOwner){
             binding.rcvCartBasket.apply {
-                cartBasketAdapter=CartBasketAdapter(it)
+                cartBasketAdapter= CartBasketAdapter(it)
                 adapter=cartBasketAdapter
                 layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             }

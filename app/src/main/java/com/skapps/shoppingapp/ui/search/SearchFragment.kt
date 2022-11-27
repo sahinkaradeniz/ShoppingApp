@@ -63,7 +63,8 @@ class SearchFragment : Fragment() {
             adapter = searchProductAdapter
         }
         binding.backHome.setOnClickListener {
-            findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment2)
+            findNavController().popBackStack()
+           // findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment2)
         }
 
     }
