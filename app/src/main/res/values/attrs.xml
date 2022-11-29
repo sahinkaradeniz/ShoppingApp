@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BasketView" >
+        <attr name="bv_getPiece" format="integer"/>
+        <attr name="bv_updatePiece" format="integer"/>
+        <attr name="bv_addPiece" format="integer"/>
+        <attr name="bv_deletePiece" format="integer"/>
+    </declare-styleable>
+</resources>

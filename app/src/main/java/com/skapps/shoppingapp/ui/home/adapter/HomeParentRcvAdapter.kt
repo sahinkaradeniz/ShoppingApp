@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.ui.home
+package com.skapps.shoppingapp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

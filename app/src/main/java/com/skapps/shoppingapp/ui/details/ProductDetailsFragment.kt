@@ -14,6 +14,7 @@ import com.skapps.shoppingapp.adapter.ProductCommentAdapter
 import com.skapps.shoppingapp.databinding.FragmentProductDetailsBinding
 import com.skapps.shoppingapp.model.Product
 
+
 class ProductDetailsFragment : Fragment() {
     private lateinit var product:Product
     private lateinit var viewModel: ProductDetailsViewModel
