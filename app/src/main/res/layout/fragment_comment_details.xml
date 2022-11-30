@@ -36,6 +36,7 @@
             </TextView>
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/backButtonComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"

@@ -40,12 +40,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.products.observe(viewLifecycleOwner) {
             binding.rcvHome.apply {
-                homeParentRcvAdapter = HomeParentRcvAdapter(it) { product ->
-                    val bundle = Bundle()
-                    bundle.putSerializable("product", product)
-                    findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,
-                        bundle)
-                }
+                homeParentRcvAdapter = HomeParentRcvAdapter(it)
                 adapter = homeParentRcvAdapter
                 layoutManager =
                     LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)

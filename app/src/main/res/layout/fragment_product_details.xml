@@ -17,7 +17,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton"
+                android:id="@+id/addBasketButton"
                 android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 android:layout_marginEnd="16dp"
@@ -40,7 +40,7 @@
                 android:background="@drawable/background_radius"
                 android:padding="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/appCompatButton"
+                app:layout_constraintEnd_toStartOf="@+id/addBasketButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_outline_favorite_black"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />

@@ -36,6 +36,8 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
         binding.categoryViewModel=viewModel
+        viewModel.getList()
+        observeLiveData()
     }
     private fun observeLiveData(){
         viewModel.categoryList.observe(viewLifecycleOwner){

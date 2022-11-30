@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_productFeaturesFragment"
             app:destination="@id/productFeaturesFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productDescriptionFragment"
+            app:destination="@id/productDescriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentDetailsFragment"
@@ -73,4 +76,8 @@
         android:name="com.skapps.shoppingapp.ui.productFeatures.ProductFeaturesFragment"
         android:label="fragment_product_features"
         tools:layout="@layout/fragment_product_features" />
+    <fragment
+        android:id="@+id/productDescriptionFragment"
+        android:name="com.skapps.shoppingapp.ui.productDescription.ProductDescriptionFragment"
+        android:label="ProductDescriptionFragment" />
 </navigation>

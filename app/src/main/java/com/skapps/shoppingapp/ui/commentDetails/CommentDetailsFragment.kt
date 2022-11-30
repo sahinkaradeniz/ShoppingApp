@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.ProductCommentAdapter
@@ -37,6 +38,10 @@ class CommentDetailsFragment : Fragment() {
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
                 setHasFixedSize(true)
             }
+
+        }
+        binding.backButtonComments.setOnClickListener{
+            findNavController().popBackStack()
         }
     }
 

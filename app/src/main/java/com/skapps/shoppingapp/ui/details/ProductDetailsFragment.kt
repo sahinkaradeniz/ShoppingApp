@@ -13,6 +13,7 @@ import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.ProductCommentAdapter
 import com.skapps.shoppingapp.databinding.FragmentProductDetailsBinding
 import com.skapps.shoppingapp.model.Product
+import com.skapps.shoppingapp.utils.succesToast
 
 
 class ProductDetailsFragment : Fragment() {
@@ -47,6 +48,16 @@ class ProductDetailsFragment : Fragment() {
         binding.productFeatures.setOnClickListener {
             findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)
         }
+        binding.backButtonDetails.setOnClickListener{
+            findNavController().popBackStack()
+        }
+        binding.productDescription.setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailsFragment_to_productDescriptionFragment)
+        }
+        binding.addBasketButton.setOnClickListener{
+            requireContext().succesToast("Sepete Eklendi")
+        }
+
     }
 
     private fun observeLiveData(){
@@ -61,7 +72,7 @@ class ProductDetailsFragment : Fragment() {
             }
         }
         viewModel.detailsProduct.observe(viewLifecycleOwner){
-            Toast.makeText(requireContext(),product.name,Toast.LENGTH_SHORT).show()
+            context?.succesToast("Product Details Fragment")
         }
     }
 

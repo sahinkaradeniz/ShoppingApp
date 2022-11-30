@@ -32,9 +32,6 @@ class BasketView @JvmOverloads constructor(
             bvAddButton.setOnClickListener{
                 addOnePiece()
             }
-            if(piece ==0){
-                binding.bvDeleteButton.hide()
-            }
         }
     }
 
@@ -47,12 +44,10 @@ class BasketView @JvmOverloads constructor(
         binding.bvDeleteButton.show()
         return piece
     }
-    @SuppressLint("ResourceAsColor")
+
     private fun deleteOnePiece():Int{
         if (piece>0){
             piece -= 1
-        }else{
-            binding.bvDeleteButton.hide()
         }
         binding.bvPieceText.text=piece.toString()
         return piece

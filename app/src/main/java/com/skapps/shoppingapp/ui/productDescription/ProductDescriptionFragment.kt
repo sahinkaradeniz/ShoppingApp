@@ -6,23 +6,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.skapps.shoppingapp.R
+import com.skapps.shoppingapp.databinding.FragmentProductDescriptionBinding
 
 class ProductDescriptionFragment : Fragment() {
 
-    private lateinit var viewModel: ProductDescriptionViewModel
-
+    private lateinit var viewModel: FragmentProductDescriptionBinding
+    private lateinit var binding:FragmentProductDescriptionBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_product_description, container, false)
+    ): View {
+        binding= FragmentProductDescriptionBinding.inflate(inflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProductDescriptionViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.backPoductDescription.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        super.onViewCreated(view, savedInstanceState)
     }
+
 
 }
