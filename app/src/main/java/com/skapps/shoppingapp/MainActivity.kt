@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
         val view = binding.root
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            binding.bottomNavigationView.visibility= if (destination.id ==R.id.productDetailsFragment || destination.id==R.id.searchFragment){
+            binding.bottomNavigationView.visibility= if (destination.id ==R.id.productDetailsFragment || destination.id==R.id.searchFragment || destination.id==R.id.splashFragment){
                 View.GONE
             }else{
                 View.VISIBLE

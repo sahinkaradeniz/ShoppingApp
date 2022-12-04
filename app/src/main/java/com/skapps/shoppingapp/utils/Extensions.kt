@@ -1,21 +1,26 @@
 package com.skapps.shoppingapp.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.skapps.shoppingapp.R
 import es.dmoral.toasty.Toasty
 import java.io.File
 
@@ -128,7 +133,16 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
         start()
     }
 }
-
 fun downloadImage(view: ImageView, url:String?) {
     view.downloadFromUrl(url, placeholderProgressBar(view.context))
 }
+fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor =getColor(R.color.splashColor)
+    WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight
+}fun Activity.DefaultchangeStatusBarColor(isLight: Boolean) {
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor =getColor(R.color.grey)
+    WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight
+}
+

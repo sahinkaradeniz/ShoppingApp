@@ -32,6 +32,8 @@
     <color name="icongrey">#3B3B3B</color>
     <color name="textcolor">#434343</color>
     <color name="greyBackground">#8A8A8A</color>
+    <color name="splashColor">#F1A239</color>
+
     //________________________________________
     <color name="pie_chart_1">#4777C0</color>
     <color name="pie_chart_2">#A374C6</color>

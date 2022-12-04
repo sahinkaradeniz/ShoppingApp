@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.FragmentHomeBinding
 import com.skapps.shoppingapp.ui.home.adapter.HomeParentRcvAdapter
+import com.skapps.shoppingapp.utils.DefaultchangeStatusBarColor
 
 class HomeFragment : Fragment() {
 
@@ -21,9 +22,10 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        requireActivity().DefaultchangeStatusBarColor(true)
         return binding.root
     }
 
