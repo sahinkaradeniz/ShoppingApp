@@ -20,9 +20,8 @@ class HomeParentRcvAdapter(private var productList:List<ProductModel>):RecyclerV
             binding.parentText.text=product.title
             val childRcvAdapter= HomeChildRcvAdapter(product.productModel){
                 val bundle = Bundle()
-                bundle.putSerializable("product",it)
-                findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
-                    bundle)
+           //     bundle.putSerializable("product",it)
+          //      findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
             }
             binding.parentRcv.layoutManager= LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
             binding.parentRcv.adapter=childRcvAdapter

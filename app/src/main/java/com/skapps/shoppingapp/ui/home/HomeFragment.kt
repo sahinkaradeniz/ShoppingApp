@@ -25,12 +25,13 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        requireActivity().DefaultchangeStatusBarColor(true)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().DefaultchangeStatusBarColor(true)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.editText.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {

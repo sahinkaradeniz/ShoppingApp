@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
  * Purpose of [BaseFragment] is to simplify view creation and provide easy access to fragment's
  * [navController] and [binding].
  */
+
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     //region Abstractions

@@ -12,16 +12,10 @@ import com.skapps.shoppingapp.model.ProductModel
 class HomeViewModel : ViewModel() {
     private var _productList=MutableLiveData<ArrayList<ProductModel>>()
     val products:LiveData<ArrayList<ProductModel>> get() = _productList
-    private val product= Product("Test deneme 2 2 342 hoppa","Harley Davidson","299.99",4.6)
+   // private val product= Product("Test deneme 2 2 342 hoppa","Harley Davidson","299.99",4.6)
     private fun getAllProductList(){
         val productList=ArrayList<Product>()
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
+
         val productModel = ProductModel(2,"Ayakkabılar",productList)
         val productModelList=ArrayList<ProductModel>()
         productModelList.add(productModel)

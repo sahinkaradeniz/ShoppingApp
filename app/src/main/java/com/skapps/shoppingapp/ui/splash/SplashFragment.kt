@@ -15,33 +15,19 @@ import com.skapps.shoppingapp.utils.OrangechangeStatusBarColor
 
 
 class SplashFragment : Fragment() {
-
-
     private lateinit var viewModel: SplashViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        object : CountDownTimer(3000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                }
-            override fun onFinish() {
-                lifecycleScope.launchWhenResumed {
-                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                }
-            }
-        }.start()
-    }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
         requireActivity().OrangechangeStatusBarColor(true)
+        viewModel.timer.observe(viewLifecycleOwner){
+            if (it){
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            }
+        }
     }
 
 

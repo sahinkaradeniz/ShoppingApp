@@ -11,8 +11,8 @@ class HomeChildRcvAdapter(val productsList: List<Product>,private var onItemClic
         fun bind(product:Product){
             val price ="${product.price} TL"
             binding.textPrice.text=price
-            binding.textProductName.text=product.name
-            binding.textRate.text=product.stars.toString()
+       //     binding.textProductName.text=product.name
+        //    binding.textRate.text=product.stars.toString()
         }
     }
 

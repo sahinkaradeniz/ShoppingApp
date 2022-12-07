@@ -9,9 +9,7 @@ import com.skapps.shoppingapp.model.Basket
 class CartBasketAdapter(private var basketList:ArrayList<Basket>):RecyclerView.Adapter<CartBasketAdapter.BasketViewHolder>() {
     class BasketViewHolder(private val binding:RowCartDesignBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(basket: Basket){
-               binding.basketTotalPrice.text=basket.product.price
-                binding.productNameBasket.text=basket.product.name
-                binding.brandNameBasket.text=basket.product.brand
+
             }
     }
 

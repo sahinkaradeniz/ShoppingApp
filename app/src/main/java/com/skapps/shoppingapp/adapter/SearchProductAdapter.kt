@@ -12,8 +12,8 @@ class SearchProductAdapter(private var productList:ArrayList<Product>):RecyclerV
         fun bind(product: Product){
             val price ="${product.price} TL"
             binding.searchTextPrice.text=price
-            binding.searchTextProductName.text=product.name
-            binding.searchTextRate.text=product.stars.toString()
+            binding.searchTextProductName.text=product.brand
+            binding.searchTextRate.text= product.averageRating?.toString() ?: "Bos"
         }
     }
 

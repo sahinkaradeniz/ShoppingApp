@@ -37,13 +37,13 @@ class ProductDetailsFragment : Fragment() {
         observeLiveData()
         binding.productCommentText.setOnClickListener {
             val bundle=Bundle()
-            bundle.putSerializable("productid",product.name)
-            findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+        //    bundle.putSerializable("productid",product.name)
+         //   findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
         }
         binding.productCommentText2.setOnClickListener {
             val bundle=Bundle()
-            bundle.putSerializable("productid",product.name)
-            findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+      //      bundle.putSerializable("productid",product.name)
+       //     findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
         }
         binding.productFeatures.setOnClickListener {
             findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)
