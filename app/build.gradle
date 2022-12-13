@@ -75,11 +75,16 @@ dependencies {
     implementation 'com.github.f0ris.sweetalert:library:1.5.6'
     // Lottie Animation Lib
     implementation "com.airbnb.android:lottie:3.4.0"
-
+    //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     // Moshi
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
     // Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    //Room Database
+    implementation "androidx.room:room-runtime:2.4.3"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
 }

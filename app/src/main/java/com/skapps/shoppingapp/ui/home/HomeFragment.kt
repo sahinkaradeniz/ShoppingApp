@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.products.observe(viewLifecycleOwner) {
             binding.rcvHome.apply {
-                homeParentRcvAdapter = HomeParentRcvAdapter(it)
+                homeParentRcvAdapter = HomeParentRcvAdapter(arrayListOf())
                 adapter = homeParentRcvAdapter
                 layoutManager =
                     LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
