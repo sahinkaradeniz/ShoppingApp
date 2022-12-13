@@ -1,9 +1,12 @@
 package com.skapps.shoppingapp.data.remote
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
 
 private const val BASE_URL = "http://10.125.13.54:8080"
 
