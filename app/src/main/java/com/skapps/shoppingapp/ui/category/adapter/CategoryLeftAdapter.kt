@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowCategoryLeftBinding
 import com.skapps.shoppingapp.data.model.Category
+import com.skapps.shoppingapp.utils.downloadImage
 
-class CategoryLeftAdapter(private var categoryList:ArrayList<Category>):RecyclerView.Adapter<CategoryLeftAdapter.LeftViewHolder>() {
+class CategoryLeftAdapter(private var categoryList:List<Category>):RecyclerView.Adapter<CategoryLeftAdapter.LeftViewHolder>() {
     class LeftViewHolder( val binding:RowCategoryLeftBinding):RecyclerView.ViewHolder(binding.root){
     fun bind(category: Category){
-            binding.textCategoryLeft.text=category.category
+            binding.textCategoryLeft.text=category.categoryName
+            binding.imageView3.downloadImage(category.imageUuid)
         }
     }
 

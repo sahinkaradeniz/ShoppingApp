@@ -97,26 +97,6 @@ fun View.hide() {
     this.visibility = View.GONE
 }
 
-@SuppressLint("Range")
-fun Context.getPdfName(pdfData: Uri?): String {
-    var pdfName = ""
-    if (pdfData!!.toString().startsWith("content://")) {
-        var cursor: Cursor? = null
-        try {
-            cursor = this.contentResolver.query(pdfData, null, null, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
-                pdfName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
-            }
-            cursor!!.close()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    } else if (pdfData.toString().startsWith("file://")) {
-        pdfName = File(pdfData.toString()).name
-    }
-    return pdfName
-}
-
 fun ImageView.downloadFromUrl(url: String?, progressDrawable: CircularProgressDrawable){
     val options = RequestOptions()
         .placeholder(progressDrawable)
@@ -133,8 +113,9 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
         start()
     }
 }
-fun downloadImage(view: ImageView, url:String?) {
-    view.downloadFromUrl(url, placeholderProgressBar(view.context))
+fun ImageView.downloadImage( url:String?) {
+    val imageUrl="http://10.125.13.54:8080/v1/image/$url"
+    this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))
 }
 fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

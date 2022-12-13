@@ -1,24 +1,40 @@
 package com.skapps.shoppingapp.ui.category
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.model.Category
+import com.skapps.shoppingapp.data.remote.ApiStatus
+import com.skapps.shoppingapp.data.remote.ShoppingApi
+import kotlinx.coroutines.launch
 
 class CategoryViewModel : ViewModel() {
-    var categoryList=MutableLiveData<ArrayList<Category>>()
-fun getList(){
-    val category=Category("1","Outdoor Ayakkabı","null")
-    val category2=Category("1","Spor Ayakkabı","null")
-    val category3=Category("1","Kundura","null")
-    val clist=ArrayList<Category>()
-    clist.add(category)
-    clist.add(category2)
-    clist.add(category3)
-    clist.add(category)
-    clist.add(category2)
-    clist.add(category3)
-    clist.add(category)
-    clist.add(category2)
-    categoryList.value=clist
-}
+    private val TAG = "CategoryViewModel"
+   private var _categoryList=MutableLiveData<List<Category>>()
+    val categoryList:LiveData<List<Category>>
+    get() = _categoryList
+
+    private val _status = MutableLiveData<ApiStatus>()
+    val status: LiveData<ApiStatus>
+        get() = _status
+
+    init {
+        getAllCategory()
+    }
+
+    private fun getAllCategory(){
+        viewModelScope.launch {
+          _status.value=ApiStatus.LOADING
+            try {
+                _status.value=ApiStatus.DONE
+                _categoryList.value= ShoppingApi.retrofitService.getAllCategory()
+                Log.e(TAG,categoryList.toString())
+            }catch (e : Exception){
+                _status.value=ApiStatus.ERROR
+                Log.e(TAG,e.message.toString())
+            }
+        }
+    }
 }
