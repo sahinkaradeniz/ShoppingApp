@@ -16,12 +16,10 @@ import retrofit2.http.Query
 interface ShoppingApiService{
     @GET("v1/product")
     suspend fun getAllProduct():List<Product>
-
     @GET("/v1/product/1")
     suspend fun getProduct():Product
-
     @GET("/v1/category/{category}")
-    suspend fun getCategoryProducts(
-        @Path("category") id:Int
-    ):Category
+    suspend fun getCategoryProducts(@Path("category") id:Int):Category
+    @GET("/v1/category")
+    suspend fun getAllCategory():List<Category>
 }
