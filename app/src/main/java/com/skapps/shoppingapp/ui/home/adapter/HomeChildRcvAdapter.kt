@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
-import com.skapps.shoppingapp.model.Product
+import com.skapps.shoppingapp.data.model.Product
 
 class HomeChildRcvAdapter(val productsList: List<Product>,private var onItemClick:(product:Product) -> Unit):RecyclerView.Adapter<HomeChildRcvAdapter.HomeViewHolder>(){
     class HomeViewHolder(private val binding:RowChildHomeBinding):RecyclerView.ViewHolder(binding.root) {

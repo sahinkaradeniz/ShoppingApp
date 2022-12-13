@@ -78,4 +78,8 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 }

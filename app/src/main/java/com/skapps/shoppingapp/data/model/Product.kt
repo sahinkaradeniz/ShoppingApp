@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.model
+package com.skapps.shoppingapp.data.model
 
 import com.google.gson.annotations.SerializedName
 data class Product (

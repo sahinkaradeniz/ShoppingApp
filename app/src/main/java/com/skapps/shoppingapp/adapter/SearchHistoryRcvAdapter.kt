@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowHistorySearchBinding
-import com.skapps.shoppingapp.model.SearchHistory
+import com.skapps.shoppingapp.data.model.SearchHistory
 
 class SearchHistoryRcvAdapter(private var productList:ArrayList<SearchHistory>):RecyclerView.Adapter<SearchHistoryRcvAdapter.HistoryViewHolder>() {
     class HistoryViewHolder(private val binding:RowHistorySearchBinding):RecyclerView.ViewHolder(binding.root) {

@@ -1,10 +1,8 @@
 package com.skapps.shoppingapp.ui.category
 
-import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skapps.shoppingapp.model.Category
+import com.skapps.shoppingapp.data.model.Category
 
 class CategoryViewModel : ViewModel() {
     var categoryList=MutableLiveData<ArrayList<Category>>()

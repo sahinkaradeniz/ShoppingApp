@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowCartDesignBinding
-import com.skapps.shoppingapp.model.Basket
+import com.skapps.shoppingapp.data.model.Basket
 
 class CartBasketAdapter(private var basketList:ArrayList<Basket>):RecyclerView.Adapter<CartBasketAdapter.BasketViewHolder>() {
     class BasketViewHolder(private val binding:RowCartDesignBinding):RecyclerView.ViewHolder(binding.root){

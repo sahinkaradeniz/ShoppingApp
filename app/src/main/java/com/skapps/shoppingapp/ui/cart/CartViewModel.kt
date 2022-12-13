@@ -2,8 +2,7 @@ package com.skapps.shoppingapp.ui.cart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skapps.shoppingapp.model.Basket
-import com.skapps.shoppingapp.model.Product
+import com.skapps.shoppingapp.data.model.Basket
 
 class CartViewModel : ViewModel() {
 

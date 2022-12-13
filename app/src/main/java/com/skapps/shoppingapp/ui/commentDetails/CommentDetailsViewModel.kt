@@ -3,7 +3,7 @@ package com.skapps.shoppingapp.ui.commentDetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skapps.shoppingapp.model.Comment
+import com.skapps.shoppingapp.data.model.Comment
 
 class CommentDetailsViewModel : ViewModel() {
     private var _commentList= MutableLiveData<ArrayList<Comment>>()

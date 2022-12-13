@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowCategoryRightBinding
-import com.skapps.shoppingapp.model.Category
+import com.skapps.shoppingapp.data.model.Category
 
 class CategoryRightAdapter(private var categorylist:ArrayList<Category>):RecyclerView.Adapter<CategoryRightAdapter.RightViewHolder>(){
     class RightViewHolder(private val binding:RowCategoryRightBinding):RecyclerView.ViewHolder(binding.root){

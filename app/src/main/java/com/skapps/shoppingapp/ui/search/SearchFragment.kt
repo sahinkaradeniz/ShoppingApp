@@ -9,12 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.SearchHistoryRcvAdapter
 import com.skapps.shoppingapp.adapter.SearchProductAdapter
 import com.skapps.shoppingapp.databinding.FragmentSearchBinding
-import com.skapps.shoppingapp.model.Product
-import com.skapps.shoppingapp.model.SearchHistory
+import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.data.model.SearchHistory
 
 class SearchFragment : Fragment() {
 

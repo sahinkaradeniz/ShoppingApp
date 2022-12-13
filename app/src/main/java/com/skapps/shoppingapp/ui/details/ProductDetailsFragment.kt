@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.ProductCommentAdapter
 import com.skapps.shoppingapp.databinding.FragmentProductDetailsBinding
-import com.skapps.shoppingapp.model.Product
+import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.utils.succesToast
 
 

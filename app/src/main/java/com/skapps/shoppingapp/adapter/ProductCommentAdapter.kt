@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowProductCommentBinding
-import com.skapps.shoppingapp.model.Comment
+import com.skapps.shoppingapp.data.model.Comment
 
 class ProductCommentAdapter(val type:Int,val commentList:ArrayList<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
     class CommentViewHolder(val binding:RowProductCommentBinding):RecyclerView.ViewHolder(binding.root){

@@ -3,15 +3,10 @@ package com.skapps.shoppingapp.ui.home.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
-import com.skapps.shoppingapp.model.Product
-import com.skapps.shoppingapp.model.ProductModel
+import com.skapps.shoppingapp.data.model.ProductModel
 
 class HomeParentRcvAdapter(private var productList:List<ProductModel>):RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
 
