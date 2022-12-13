@@ -5,14 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
 import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.utils.downloadImage
 
 class HomeChildRcvAdapter(val productsList: List<Product>,private var onItemClick:(product:Product) -> Unit):RecyclerView.Adapter<HomeChildRcvAdapter.HomeViewHolder>(){
     class HomeViewHolder(private val binding:RowChildHomeBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(product:Product){
             val price ="${product.price} TL"
             binding.textPrice.text=price
-       //     binding.textProductName.text=product.name
-        //    binding.textRate.text=product.stars.toString()
+            binding.textProductName.text=product.model
+            binding.textRate.text=product.averageRating.toString()
+            binding.productImage.downloadImage(product.imageUuid)
         }
     }
 

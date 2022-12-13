@@ -56,7 +56,7 @@
         android:label="CartFragment" />
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.skapps.shoppingapp.ui.details.ProductDetailsFragment"
+        android:name="com.skapps.shoppingapp.ui.productdetails.ProductDetailsFragment"
         android:label="ProductDetailsFragment" >
         <action
             android:id="@+id/action_productDetailsFragment_to_commentDetailsFragment"

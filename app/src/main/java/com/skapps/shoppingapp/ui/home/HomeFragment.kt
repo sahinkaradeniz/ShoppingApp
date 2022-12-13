@@ -41,9 +41,12 @@ class HomeFragment : Fragment() {
         binding.textInputLayout.setStartIconOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
+        observeLiveData()
+    }
+    private fun observeLiveData(){
         viewModel.products.observe(viewLifecycleOwner) {
             binding.rcvHome.apply {
-                homeParentRcvAdapter = HomeParentRcvAdapter(arrayListOf())
+                homeParentRcvAdapter = HomeParentRcvAdapter(it)
                 adapter = homeParentRcvAdapter
                 layoutManager =
                     LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)

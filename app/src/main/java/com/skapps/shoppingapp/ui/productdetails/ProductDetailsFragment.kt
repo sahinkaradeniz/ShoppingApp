@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.ui.details
+package com.skapps.shoppingapp.ui.productdetails
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -35,11 +35,6 @@ class ProductDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ProductDetailsViewModel::class.java)
         viewModel.setProduct(product)
         observeLiveData()
-        binding.productCommentText.setOnClickListener {
-            val bundle=Bundle()
-        //    bundle.putSerializable("productid",product.name)
-         //   findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
-        }
         binding.productCommentText2.setOnClickListener {
             val bundle=Bundle()
       //      bundle.putSerializable("productid",product.name)
@@ -72,7 +67,7 @@ class ProductDetailsFragment : Fragment() {
             }
         }
         viewModel.detailsProduct.observe(viewLifecycleOwner){
-            context?.succesToast("Product Details Fragment")
+
         }
     }
 

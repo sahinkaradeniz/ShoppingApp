@@ -70,10 +70,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:context=".ui.details.ProductDetailsFragment">
+                tools:context=".ui.productdetails.ProductDetailsFragment">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView"
+                    android:id="@+id/product_dtail_image"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:background="@color/white"
@@ -120,10 +120,10 @@
                     android:backgroundTint="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+                    app:layout_constraintTop_toBottomOf="@+id/product_dtail_image">
 
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/product_brand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -137,6 +137,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/product_model"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -145,19 +146,18 @@
                         android:textColor="@color/black"
                         android:textSize="17sp"
                         android:textStyle="normal|bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                        app:layout_constraintStart_toEndOf="@+id/textView7"
-                        app:layout_constraintTop_toTopOf="@+id/textView7">
-                    </TextView>
+                        app:layout_constraintBottom_toBottomOf="@+id/product_brand"
+                        app:layout_constraintStart_toEndOf="@+id/product_brand"
+                        app:layout_constraintTop_toTopOf="@+id/product_brand"></TextView>
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/product_destcription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="@string/test_string_ayakkabi"
-                        app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+                        app:layout_constraintStart_toStartOf="@+id/product_brand"
+                        app:layout_constraintTop_toBottomOf="@+id/product_brand">
                     </TextView>
 
                     <androidx.cardview.widget.CardView
@@ -167,8 +167,8 @@
                         android:layout_marginBottom="8dp"
                         app:cardCornerRadius="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView8"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8">
+                        app:layout_constraintStart_toStartOf="@+id/product_destcription"
+                        app:layout_constraintTop_toBottomOf="@+id/product_destcription">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -190,6 +190,7 @@
                             </androidx.appcompat.widget.AppCompatImageView>
 
                             <TextView
+                                android:id="@+id/product_rating_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
@@ -205,7 +206,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/product_comment_text"
+                        android:id="@+id/product_comment_text_size"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"

@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 @Entity(tableName = "basketdatabase")
 data class Product (
     @ColumnInfo(name="id")
@@ -39,7 +41,7 @@ data class Product (
     @ColumnInfo(name = "status")
     @SerializedName("status" )
     var status : String? = null
-){
+) : Serializable {
     @PrimaryKey(autoGenerate = true)
     var roomid=0
 }
