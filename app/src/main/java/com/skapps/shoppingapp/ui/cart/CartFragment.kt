@@ -28,7 +28,7 @@ class CartFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
         observeLiveData()
         binding.lifecycleOwner=this
-        viewModel.getList()
+        viewModel.getList(requireContext())
     }
     fun observeLiveData(){
         viewModel.basketLis.observe(viewLifecycleOwner){

@@ -35,9 +35,9 @@ data class Product (
     @ColumnInfo(name="imageUuid")
     @SerializedName("imageUuid")
     var imageUuid : String? = null,
-    @ColumnInfo(name="category")
-    @SerializedName("category")
-    var category : String? = null,
+    @ColumnInfo(name="categoryId")
+    @SerializedName("categoryId")
+    var categoryId : String? = null,
     @ColumnInfo(name = "status")
     @SerializedName("status" )
     var status : String? = null
