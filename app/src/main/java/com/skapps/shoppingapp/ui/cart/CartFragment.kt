@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.ui.cart.adapter.CartBasketAdapter
 import com.skapps.shoppingapp.databinding.FragmentCartBinding
+import com.skapps.shoppingapp.utils.CartClickType
+import com.skapps.shoppingapp.utils.succesToast
 
 class CartFragment : Fragment() {
 
@@ -30,7 +32,14 @@ class CartFragment : Fragment() {
     fun observeLiveData(){
         viewModel.basketList.observe(viewLifecycleOwner){
             binding.rcvCartBasket.apply {
-                cartBasketAdapter= CartBasketAdapter(it)
+                cartBasketAdapter= CartBasketAdapter(it){ product , type ->
+                    when(type){
+                        CartClickType.ADD -> {requireContext().succesToast("ekle")}
+                        CartClickType.REDUCTION ->{requireContext().succesToast("cıkar")}
+                        CartClickType.DELETE ->{requireContext().succesToast("sil")}
+                        else ->{requireContext().succesToast("ürün")}
+                    }
+                }
                 adapter=cartBasketAdapter
                 layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             }

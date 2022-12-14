@@ -102,7 +102,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/text"
+                android:id="@+id/delete_button"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:background="@color/float_transparent"
