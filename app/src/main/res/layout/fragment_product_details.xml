@@ -68,21 +68,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:context=".ui.productdetails.ProductDetailsFragment">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/product_dtail_image"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="320dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ayakkabi"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                </androidx.appcompat.widget.AppCompatImageView>
+                    app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatImageView>
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/appCompatImageButton"
@@ -109,8 +109,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageButton"
-                    tools:ignore="SpeakableTextPresentCheck">
-                </androidx.appcompat.widget.AppCompatImageButton>
+                    tools:ignore="SpeakableTextPresentCheck"></androidx.appcompat.widget.AppCompatImageButton>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
@@ -157,8 +156,7 @@
                         android:layout_marginTop="4dp"
                         android:text="@string/test_string_ayakkabi"
                         app:layout_constraintStart_toStartOf="@+id/product_brand"
-                        app:layout_constraintTop_toBottomOf="@+id/product_brand">
-                    </TextView>
+                        app:layout_constraintTop_toBottomOf="@+id/product_brand"></TextView>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView4"
@@ -305,6 +303,7 @@
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -320,12 +319,12 @@
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ürün Yorumları"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/raleway"
+                        android:text="Ürün Yorumları"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -335,11 +334,11 @@
                         android:id="@+id/cardView6"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginStart="24dp"
-                        app:cardCornerRadius="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
                         android:layout_marginBottom="8dp"
+                        app:cardCornerRadius="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -351,10 +350,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Tüm Yorumlar"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
                             android:textAlignment="center"
-                            android:textSize="16sp">
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold">
 
                         </TextView>
                     </androidx.cardview.widget.CardView>

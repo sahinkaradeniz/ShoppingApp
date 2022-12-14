@@ -24,7 +24,13 @@
             app:destination="@id/searchFragment" />
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment" >
+
+        </action>
+        <argument
+            android:name="productUuid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

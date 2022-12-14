@@ -25,15 +25,12 @@ class ProductDetailsViewModel: ViewModel() {
 
    var productId:Int?=null
 
-    init {
-        getCommentList()
-    }
-  private fun getCommentList(){
+   fun getProduct(productId:Int){
       viewModelScope.launch {
           _status.value=ApiStatus.LOADING
           try {
               _status.value=ApiStatus.DONE
-              _detailsProduct.value= ShoppingApi.retrofitService.getProduct(12)
+              _detailsProduct.value= ShoppingApi.retrofitService.getProduct(productId)
           }catch (e : Exception){
               _status.value=ApiStatus.ERROR
               Log.e(TAG,"Api eror ${e.message.toString()}")
@@ -41,7 +38,5 @@ class ProductDetailsViewModel: ViewModel() {
       }
 
    }
-     fun setProduct(product: Product){
-        productId=product.id
-    }
+
 }

@@ -1,6 +1,7 @@
 package com.skapps.shoppingapp.ui.home.adapter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
@@ -10,24 +11,43 @@ import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
 import com.skapps.shoppingapp.data.model.ProductModel
+import com.skapps.shoppingapp.ui.home.HomeFragmentDirections
+import com.skapps.shoppingapp.utils.HomeClickType
+import com.skapps.shoppingapp.utils.succesToast
+import com.skapps.shoppingapp.utils.toast
 
-class HomeParentRcvAdapter(private var productList:List<Category>):RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
+class HomeParentRcvAdapter(private var productList: List<Category>) :
+    RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
 
-    class HomeParentViewHolder(private val binding: RowParentHomeBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(category: Category){
-            binding.parentText.text=category.categoryName
-            val childRcvAdapter= HomeChildRcvAdapter(category.products){
+    class HomeParentViewHolder(private val binding: RowParentHomeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(category: Category) {
+            binding.parentText.text = category.categoryName
+            val childRcvAdapter = HomeChildRcvAdapter(category.products) { product, click ->
                 val bundle = Bundle()
-               bundle.putSerializable("product",it)
-               findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
+                bundle.putSerializable("prod", product.id)
+                when (click) {
+                    HomeClickType.BUYBUTTON -> binding.root.context.succesToast("Sepete Eklendi")
+                    HomeClickType.IMAGE -> {
+                        findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
+                            bundle)
+                    }
+                    HomeClickType.FAVORİ -> binding.root.context.succesToast("favorilere Eklendi")
+                    else -> {
+                        findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
+                            bundle)
+                    }
+                }
             }
-            binding.parentRcv.layoutManager= LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
-            binding.parentRcv.adapter=childRcvAdapter
+            binding.parentRcv.layoutManager =
+                LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+            binding.parentRcv.adapter = childRcvAdapter
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeParentViewHolder {
-        val rcvParent=RowParentHomeBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val rcvParent =
+            RowParentHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeParentViewHolder(rcvParent)
     }
 
@@ -36,6 +56,6 @@ class HomeParentRcvAdapter(private var productList:List<Category>):RecyclerView.
     }
 
     override fun getItemCount(): Int {
-      return  productList.size
+        return productList.size
     }
 }
