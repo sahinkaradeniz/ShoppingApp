@@ -1,6 +1,7 @@
 package com.skapps.shoppingapp.ui.cart
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,13 +12,15 @@ import kotlinx.coroutines.launch
 
 class CartViewModel : ViewModel() {
 
-    val basketLis=MutableLiveData<List<Product>>()
+   private var _basketList=MutableLiveData<List<Product>>()
+   val basketList:LiveData<List<Product>>
+    get() = _basketList
     val localDatabase=BasketLocalDatabase()
-    fun getList(context: Context):List<Product>{
+
+    fun getList(context: Context){
        viewModelScope.launch {
-          basketLis.value= localDatabase.getAllBasket(context)
+           _basketList.value= localDatabase.getAllBasket(context)
        }
-      return arrayListOf()
     }
 
 }

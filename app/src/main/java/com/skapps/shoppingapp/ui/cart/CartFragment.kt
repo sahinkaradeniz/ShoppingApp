@@ -20,18 +20,15 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding= FragmentCartBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
         observeLiveData()
         binding.lifecycleOwner=this
         viewModel.getList(requireContext())
+        return binding.root
     }
+
     fun observeLiveData(){
-        viewModel.basketLis.observe(viewLifecycleOwner){
+        viewModel.basketList.observe(viewLifecycleOwner){
             binding.rcvCartBasket.apply {
                 cartBasketAdapter= CartBasketAdapter(it)
                 adapter=cartBasketAdapter

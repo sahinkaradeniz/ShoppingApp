@@ -35,7 +35,7 @@ class BasketView @JvmOverloads constructor(
         }
     }
 
-    private fun getPiece():Int{
+    fun getPiece():Int{
         return piece
     }
     private fun addOnePiece():Int{
@@ -52,7 +52,7 @@ class BasketView @JvmOverloads constructor(
         binding.bvPieceText.text=piece.toString()
         return piece
     }
-    private fun setPiece(newPiece : Int):Int{
+     fun setPiece(newPiece : Int):Int{
         piece=newPiece
         binding.bvPieceText.text=piece.toString()
         return piece

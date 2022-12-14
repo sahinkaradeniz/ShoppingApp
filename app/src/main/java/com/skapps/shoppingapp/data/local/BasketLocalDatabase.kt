@@ -19,6 +19,7 @@ class BasketLocalDatabase{
                 val prod=control(basketList,product)
                 if (prod.stockQuantity!=0){
                     prod.stockQuantity=prod.stockQuantity?.plus(1)
+                    prod.price=prod.price?.plus(product.price!!)
                     basketDatabase.getBasketDao().updateProductBasket(prod)
                 }else{
                     basketDatabase.getBasketDao().insertProduct(product)
@@ -28,7 +29,8 @@ class BasketLocalDatabase{
             }
         }
     }
-  private  fun control(list: List<Product>,product: Product):Product{
+
+    private  fun control(list: List<Product>,product: Product):Product{
         var prod=Product(1,"0","0","0","0",0.0,0,0,"0","0","0")
         for (i in list){
             if (i.id==product.id){
@@ -38,6 +40,7 @@ class BasketLocalDatabase{
         }
         return prod
     }
+
     fun getAllBasket(context: Context):List<Product>{
             basketDatabase= BasketDatabase.getBookDatabase(context)!!
             return basketDatabase.getBasketDao().getBasket()
