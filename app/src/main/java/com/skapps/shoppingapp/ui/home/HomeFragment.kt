@@ -36,6 +36,10 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
             }
         }
+        binding.profileButton.setOnClickListener {
+            val action =HomeFragmentDirections.actionHomeFragmentToProfileFragment()
+            findNavController().navigate(action)
+        }
         binding.textInputLayout.setStartIconOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }

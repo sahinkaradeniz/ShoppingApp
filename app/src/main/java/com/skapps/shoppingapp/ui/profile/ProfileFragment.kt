@@ -10,10 +10,6 @@ import com.skapps.shoppingapp.R
 
 class ProfileFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
-
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreateView(
