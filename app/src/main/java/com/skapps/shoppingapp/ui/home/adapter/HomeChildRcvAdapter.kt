@@ -13,6 +13,7 @@ class HomeChildRcvAdapter(
     val productsList: List<Product>,
     private var onItemClick: (product: Product, click: HomeClickType) -> Unit,
 ) : RecyclerView.Adapter<HomeChildRcvAdapter.HomeViewHolder>() {
+
     class HomeViewHolder(val binding: RowChildHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             val price = "${product.price} TL"
