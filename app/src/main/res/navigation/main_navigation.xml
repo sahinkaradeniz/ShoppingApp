@@ -94,5 +94,12 @@
     <fragment
         android:id="@+id/favoriFragment"
         android:name="com.skapps.shoppingapp.ui.favori.FavoritesFragment"
-        android:label="FavoriFragment" />
+        android:label="FavoriFragment" >
+        <action
+            android:id="@+id/action_favoriFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_favoriFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
 </navigation>

@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.ui.cart.adapter.CartBasketAdapter
 import com.skapps.shoppingapp.databinding.FragmentCartBinding
-import com.skapps.shoppingapp.utils.CartClickType
-import com.skapps.shoppingapp.utils.succesToast
+import com.skapps.shoppingapp.utils.customView.enums.CartClickType
 import com.skapps.shoppingapp.utils.toast
 
 class CartFragment : Fragment() {

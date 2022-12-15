@@ -1,25 +1,19 @@
 package com.skapps.shoppingapp.ui.home.adapter
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.data.local.BasketDatabase
 import com.skapps.shoppingapp.data.local.BasketLocalDatabase
 import com.skapps.shoppingapp.data.local.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
-import com.skapps.shoppingapp.data.model.ProductModel
-import com.skapps.shoppingapp.ui.home.HomeFragmentDirections
-import com.skapps.shoppingapp.utils.HomeClickType
+import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.succesToast
-import com.skapps.shoppingapp.utils.toast
 
 class HomeParentRcvAdapter(private var productList: List<Category>) :
     RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {

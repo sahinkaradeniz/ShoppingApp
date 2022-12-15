@@ -1,12 +1,11 @@
 package com.skapps.shoppingapp.ui.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
 import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.utils.HomeClickType
+import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
 class HomeChildRcvAdapter(
