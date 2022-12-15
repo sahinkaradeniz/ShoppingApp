@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
-        binding.lifecycleOwner = this
         return binding.root
     }
 

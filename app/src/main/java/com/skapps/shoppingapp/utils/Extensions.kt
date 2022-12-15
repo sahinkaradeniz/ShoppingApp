@@ -114,7 +114,7 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
     }
 }
 fun ImageView.downloadImage( url:String?) {
-    val imageUrl="http://10.125.5.146:8080/v1/image/$url"
+    val imageUrl="http://10.58.10.188:8080/v1/image/$url"
     this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))
 }
 fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {
@@ -126,4 +126,5 @@ fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {
     window.statusBarColor =getColor(R.color.grey)
     WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight
 }
+
 

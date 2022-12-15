@@ -36,7 +36,7 @@
                 android:hint="@string/marka_r_n_veya_kategori_ara"
                 app:hintAnimationEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintEnd_toStartOf="@+id/profileButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:startIconDrawable="@drawable/ic_baseline_search_24">
@@ -48,12 +48,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/profileButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_outline_notifications_24"
+                android:src="@drawable/ic_round_person_outline_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
