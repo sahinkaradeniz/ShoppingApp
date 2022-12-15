@@ -6,8 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.skapps.shoppingapp.data.model.Favorite
 
-
-
 @Database(entities = [Favorite::class], version = 1)
 abstract class FavoriteDatabase: RoomDatabase() {
     abstract fun getFavoriteDao(): FavoritesDao

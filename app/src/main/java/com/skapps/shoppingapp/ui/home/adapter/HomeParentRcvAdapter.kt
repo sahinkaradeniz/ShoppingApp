@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.data.local.BasketDatabase
 import com.skapps.shoppingapp.data.local.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
@@ -23,13 +24,11 @@ import com.skapps.shoppingapp.utils.toast
 class HomeParentRcvAdapter(private var productList: List<Category>) :
     RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
 
-    class HomeParentViewHolder(private val binding: RowParentHomeBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
+    class HomeParentViewHolder(private val binding: RowParentHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
             val basketLocalDatabase=BasketLocalDatabase()
+            val favoriteLocalDatabase=FavoriteLocalDatabase()
             binding.parentText.text = category.categoryName
-
             val childRcvAdapter = HomeChildRcvAdapter(category.products) { product, click ->
                 when (click) {
                     HomeClickType.BUYBUTTON ->{
@@ -43,7 +42,10 @@ class HomeParentRcvAdapter(private var productList: List<Category>) :
                         findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
                             bundle)
                     }
-                    HomeClickType.FAVORİ -> binding.root.context.succesToast("favorilere Eklendi")
+                    HomeClickType.FAVORİ ->{
+                        binding.root.context.succesToast("Favorilere Eklendi")
+                        favoriteLocalDatabase.addFavorite(product,binding.root.context)
+                    }
                     else -> {
                         val bundle = Bundle()
                         bundle.putSerializable("prod", product.id)
