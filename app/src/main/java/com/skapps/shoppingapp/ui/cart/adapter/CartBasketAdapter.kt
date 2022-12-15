@@ -1,8 +1,11 @@
 package com.skapps.shoppingapp.ui.cart.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.RowCartDesignBinding
 import com.skapps.shoppingapp.data.model.Basket
 import com.skapps.shoppingapp.data.model.Product
@@ -22,7 +25,7 @@ class CartBasketAdapter(
             binding.productNameBasket.text = product.model
             binding.basketTotalPrice.text = price
             binding.imageView4.downloadImage(product.imageUuid)
-            product.stockQuantity?.let { binding.basketView.setPiece(it) }
+            binding.bvPieceText.text = product.stockQuantity.toString()
         }
     }
 
@@ -32,19 +35,34 @@ class CartBasketAdapter(
         return BasketViewHolder(rcvBasket)
     }
 
-    override fun onBindViewHolder(holder: BasketViewHolder, position: Int) {
+    @SuppressLint("ResourceAsColor")
+    override fun onBindViewHolder(
+        holder: BasketViewHolder,
+        @SuppressLint("RecyclerView") position: Int,
+    ) {
         holder.bind(basketList.get(position))
+
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                if (v!!.id == R.id.delete_button) {
+                    onItemClick(basketList.get(position), CartClickType.DELETE)
+                }
+            }
+
+        })
+
         holder.binding.apply {
-            deleteButton.setOnClickListener {
-                onItemClick(basketList.get(position), CartClickType.DELETE)
-            }
-            basketView.setOnClickListener {
-                onItemClick(basketList.get(position), CartClickType.ADD)
-            }
             imageView4.setOnClickListener {
                 onItemClick(basketList.get(position),
                     CartClickType.PRODUCT)
             }
+            bvAddButton.setOnClickListener {
+                onItemClick(basketList.get(position), CartClickType.ADD)
+            }
+            bvDeleteButton.setOnClickListener {
+                onItemClick(basketList.get(position), CartClickType.REDUCTION)
+            }
+            deleteButton.setOnClickListener {   onItemClick(basketList.get(position), CartClickType.DELETE) }
         }
     }
 

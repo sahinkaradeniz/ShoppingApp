@@ -37,7 +37,8 @@ class ProductDetailsFragment : Fragment() {
         observeLiveData()
         val bundle = this.arguments
         if (bundle != null) {
-            productId = bundle.getInt("prod", defaultValue)
+            productId = bundle.getInt("prod", 5)
+            viewModel.getProduct(productId)
         }
         viewModel.getProduct(productId)
         binding.productCommentText2.setOnClickListener {

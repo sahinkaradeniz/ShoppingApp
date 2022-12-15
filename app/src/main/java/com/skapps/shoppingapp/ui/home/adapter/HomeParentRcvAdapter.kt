@@ -31,8 +31,6 @@ class HomeParentRcvAdapter(private var productList: List<Category>) :
             binding.parentText.text = category.categoryName
 
             val childRcvAdapter = HomeChildRcvAdapter(category.products) { product, click ->
-                val bundle = Bundle()
-                bundle.putSerializable("prod", product.id)
                 when (click) {
                     HomeClickType.BUYBUTTON ->{
                         product.stockQuantity=1
@@ -40,11 +38,15 @@ class HomeParentRcvAdapter(private var productList: List<Category>) :
                         binding.root.context.succesToast("Ürün Sepete Eklendi")
                     }
                     HomeClickType.IMAGE -> {
+                        val bundle = Bundle()
+                        bundle.putSerializable("prod", product.id)
                         findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
                             bundle)
                     }
                     HomeClickType.FAVORİ -> binding.root.context.succesToast("favorilere Eklendi")
                     else -> {
+                        val bundle = Bundle()
+                        bundle.putSerializable("prod", product.id)
                         findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
                             bundle)
                     }

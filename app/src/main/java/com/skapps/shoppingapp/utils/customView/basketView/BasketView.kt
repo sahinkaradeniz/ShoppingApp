@@ -5,6 +5,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.cardview.widget.CardView
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.CustomBasketViewBinding
 import com.skapps.shoppingapp.utils.hide
@@ -18,6 +21,12 @@ class BasketView @JvmOverloads constructor(
 ) : FrameLayout(context, attributeSet, defStyle){
     private val binding =CustomBasketViewBinding.inflate(LayoutInflater.from(context),this,true)
     private var piece:Int=0
+    var listener:BasketViewListener? = null
+
+    fun setBasketViewListener(listener: BasketViewListener) {
+        this.listener = listener
+    }
+
     init {
         binding.root.id=View.generateViewId()
         context.obtainStyledAttributes(attributeSet, R.styleable.BasketView).apply {
@@ -34,6 +43,7 @@ class BasketView @JvmOverloads constructor(
             }
         }
     }
+
 
     fun getPiece():Int{
         return piece
