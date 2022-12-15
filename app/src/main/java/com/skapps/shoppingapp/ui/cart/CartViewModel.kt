@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.local.BasketDatabase
 import com.skapps.shoppingapp.data.local.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.FavoriteDatabase
 import com.skapps.shoppingapp.data.model.Basket
 import com.skapps.shoppingapp.data.model.Product
 import kotlinx.coroutines.launch
@@ -16,11 +17,10 @@ class CartViewModel : ViewModel() {
    private var _basketList=MutableLiveData<List<Product>>()
    val basketList:LiveData<List<Product>>
     get() = _basketList
-    val localDatabase=BasketLocalDatabase()
     val basketLocalDatabase=BasketLocalDatabase()
     fun getList(context: Context){
        viewModelScope.launch {
-           _basketList.value= localDatabase.getAllBasket(context)
+           _basketList.value= basketLocalDatabase.getAllBasket(context)
        }
     }
     fun addProductCart(product: Product,context: Context){

@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.data.model.Favorite
 
 
-@Database(entities = [Product::class], version = 1)
+
+@Database(entities = [Favorite::class], version = 1)
 abstract class FavoriteDatabase: RoomDatabase() {
     abstract fun getFavoriteDao(): FavoritesDao
     companion object{
