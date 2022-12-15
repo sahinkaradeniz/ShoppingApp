@@ -15,7 +15,7 @@ interface ShoppingApiService{
 
     @GET("/v1/category/{category}")
     suspend fun getCategoryProducts(@Path("category") id:Int):Category
-    
+
     @GET("/v1/category")
     suspend fun getAllCategory():List<Category>
 

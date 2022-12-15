@@ -22,9 +22,10 @@ class HomeViewModel(application: Application):BaseViewModel(application) {
 
     private fun getAllProductList(){
         viewModelScope.launch {
-            _status.value
+            _status.value=ApiStatus.LOADING
             try {
                _productList.value=ShoppingApi.retrofitService.getAllCategory()
+                _status.value=ApiStatus.DONE
             }catch (e : Exception){
                 _status.value=ApiStatus.ERROR
                 _productList.value= ArrayList()
