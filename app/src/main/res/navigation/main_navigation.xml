@@ -91,4 +91,8 @@
         android:id="@+id/productDescriptionFragment"
         android:name="com.skapps.shoppingapp.ui.productDescription.ProductDescriptionFragment"
         android:label="ProductDescriptionFragment" />
+    <fragment
+        android:id="@+id/favoriFragment"
+        android:name="com.skapps.shoppingapp.ui.favori.FavoritesFragment"
+        android:label="FavoriFragment" />
 </navigation>

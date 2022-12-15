@@ -6,4 +6,6 @@
     <string name="size_zel">Size Özel</string>
     <string name="sepetim">Sepetim</string>
     <string name="r_n_yorumlar">Ürün Yorumları</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
