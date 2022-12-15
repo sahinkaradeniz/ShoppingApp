@@ -113,6 +113,10 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
         start()
     }
 }
+fun Number.convertPricetoTL():String{
+    val p = "${this} TL"
+    return p
+}
 fun ImageView.downloadImage( url:String?) {
     val imageUrl="http://10.58.10.188:8080/v1/image/$url"
     this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Favorite
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowFavoritesCardBinding
+import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.downloadImage
@@ -14,8 +15,7 @@ class FavoritesProductAdapter(private val productList:List<Favorite>, var onItem
     class FavoritesViewHolder(val binding: RowFavoritesCardBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product:Favorite){
             binding.apply {
-                val price = "${product.price} TL"
-                binding.textPrice.text = price
+                binding.textPrice.text = product.price?.convertPricetoTL()
                 binding.textProductName.text = product.model
                 binding.textRate.text = product.averageRating.toString()
                 binding.productImage.downloadImage(product.imageUuid)

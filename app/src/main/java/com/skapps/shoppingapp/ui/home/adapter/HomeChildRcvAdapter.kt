@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
 import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
@@ -15,8 +16,7 @@ class HomeChildRcvAdapter(
 
     class HomeViewHolder(val binding: RowChildHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-            val price = "${product.price} TL"
-            binding.textPrice.text = price
+            binding.textPrice.text = product.price?.convertPricetoTL()
             binding.textProductName.text = product.model
             binding.textRate.text = product.averageRating.toString()
             binding.productImage.downloadImage(product.imageUuid)

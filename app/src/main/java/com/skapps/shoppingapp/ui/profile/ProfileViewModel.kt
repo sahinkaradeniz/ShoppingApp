@@ -13,8 +13,10 @@ class ProfileViewModel : ViewModel() {
     private val TAG="ProfileViewModel"
     private val _customer=MutableLiveData<Customer>()
     val customer:LiveData<Customer> get() = _customer
+
     init {
         getCustomer(1)
+
     }
     private fun getCustomer(id:Int){
         viewModelScope.launch {
@@ -25,4 +27,5 @@ class ProfileViewModel : ViewModel() {
             }
         }
     }
+
 }
