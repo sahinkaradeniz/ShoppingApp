@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowCategoryRightBinding
 import com.skapps.shoppingapp.data.model.Category
+import com.skapps.shoppingapp.data.model.Favorite
+import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.downloadFromUrl
 import com.skapps.shoppingapp.utils.downloadImage
 import com.skapps.shoppingapp.utils.placeholderProgressBar
 
-class CategoryRightAdapter(private var categorylist:List<Category>):RecyclerView.Adapter<CategoryRightAdapter.RightViewHolder>(){
+class CategoryRightAdapter(private var categorylist:List<Category>, var onItemClick: (category:Category) -> Unit):RecyclerView.Adapter<CategoryRightAdapter.RightViewHolder>(){
     class RightViewHolder(private val binding:RowCategoryRightBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(category: Category){
                 binding.textCategoryRight.text=category.categoryName
@@ -23,6 +25,9 @@ class CategoryRightAdapter(private var categorylist:List<Category>):RecyclerView
 
     override fun onBindViewHolder(holder: RightViewHolder, position: Int) {
         holder.bind(categorylist.get(position))
+        holder.itemView.setOnClickListener {
+            onItemClick(categorylist.get(position))
+        }
     }
 
     override fun getItemCount(): Int {

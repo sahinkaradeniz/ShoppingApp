@@ -15,6 +15,7 @@ class FavoritesViewModel : ViewModel() {
     get() = _favoriteList
     private val favoriteLocalDatabase= FavoriteLocalDatabase()
     private val basketLocalDatabase =BasketLocalDatabase()
+
     fun getAllList(context: Context){
      _favoriteList.value=favoriteLocalDatabase.getAllFavorites(context)
     }

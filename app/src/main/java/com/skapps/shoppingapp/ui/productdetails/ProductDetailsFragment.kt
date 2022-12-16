@@ -37,7 +37,7 @@ class ProductDetailsFragment : Fragment() {
         observeLiveData()
         val bundle = this.arguments
         if (bundle != null) {
-            productId = bundle.getInt("prod", 5)
+            productId = bundle.getInt("prod", 13)
             viewModel.getProduct(productId)
         }
         viewModel.getProduct(productId)

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.databinding.RowChildHomeBinding
+import com.skapps.shoppingapp.databinding.RowProductCardBinding
 import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.downloadImage
@@ -13,7 +13,7 @@ class ProductsAdapter(
     private val productList: List<Product>,
     var onItemClick: (product: Product, click: FavoriteClickType) -> Unit,
 ) : RecyclerView.Adapter<ProductsAdapter.FavoritesViewHolder>() {
-    class FavoritesViewHolder(val binding: RowChildHomeBinding) :
+    class FavoritesViewHolder(val binding: RowProductCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
@@ -27,7 +27,7 @@ class ProductsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
         val cardBinding =
-            RowChildHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RowProductCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoritesViewHolder(cardBinding)
     }
 
@@ -36,6 +36,9 @@ class ProductsAdapter(
         holder.binding.apply {
             buyButton.setOnClickListener {
                 onItemClick(productList.get(position), FavoriteClickType.BUY)
+            }
+            productFavorite.setOnClickListener {
+                onItemClick(productList.get(position), FavoriteClickType.FAVORİTE)
             }
             productImage.setOnClickListener {
                 onItemClick(productList.get(position), FavoriteClickType.PROCUDT)

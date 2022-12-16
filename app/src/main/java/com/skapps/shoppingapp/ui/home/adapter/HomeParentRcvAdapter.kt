@@ -15,10 +15,10 @@ import com.skapps.shoppingapp.databinding.RowParentHomeBinding
 import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.succesToast
 
-class HomeParentRcvAdapter(private var productList: List<Category>) :
+class HomeParentRcvAdapter(private var productList: List<Category>,private var onItemClick: (category:Category,click: HomeClickType) -> Unit) :
     RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
 
-    class HomeParentViewHolder(private val binding: RowParentHomeBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HomeParentViewHolder(val binding: RowParentHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
             val basketLocalDatabase=BasketLocalDatabase()
             val favoriteLocalDatabase=FavoriteLocalDatabase()
@@ -62,6 +62,14 @@ class HomeParentRcvAdapter(private var productList: List<Category>) :
 
     override fun onBindViewHolder(holder: HomeParentViewHolder, position: Int) {
         holder.bind(productList.get(position))
+        holder.binding.apply {
+            buttonCategory.setOnClickListener {
+                onItemClick(productList.get(position),HomeClickType.CATEGORY)
+            }
+            textCategory.setOnClickListener {
+                onItemClick(productList.get(position),HomeClickType.CATEGORY)
+            }
+        }
     }
 
     override fun getItemCount(): Int {

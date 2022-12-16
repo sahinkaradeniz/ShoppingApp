@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -46,6 +49,9 @@
         <action
             android:id="@+id/action_searchFragment_to_productDetailsFragment2"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -58,6 +64,9 @@
         <action
             android:id="@+id/action_categoryFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -124,4 +133,12 @@
         android:id="@+id/walletDialogFragment"
         android:name="com.skapps.shoppingapp.ui.wallet.WalletDialogFragment"
         android:label="WalletDialogFragment" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.skapps.shoppingapp.ui.products.ProductsFragment"
+        android:label="ProductsFragment" >
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
 </navigation>

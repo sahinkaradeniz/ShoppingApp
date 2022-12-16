@@ -7,7 +7,7 @@ import com.skapps.shoppingapp.databinding.RowCategoryLeftBinding
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.utils.downloadImage
 
-class CategoryLeftAdapter(private var categoryList:List<Category>):RecyclerView.Adapter<CategoryLeftAdapter.LeftViewHolder>() {
+class CategoryLeftAdapter(private var categoryList:List<Category>,var onItemClick: (category:Category) -> Unit):RecyclerView.Adapter<CategoryLeftAdapter.LeftViewHolder>() {
     class LeftViewHolder( val binding:RowCategoryLeftBinding):RecyclerView.ViewHolder(binding.root){
     fun bind(category: Category){
             binding.textCategoryLeft.text=category.categoryName
@@ -22,6 +22,9 @@ class CategoryLeftAdapter(private var categoryList:List<Category>):RecyclerView.
 
     override fun onBindViewHolder(holder: LeftViewHolder, position: Int) {
         holder.bind(categoryList.get (position))
+        holder.itemView.setOnClickListener {
+            onItemClick(categoryList.get(position))
+        }
     }
 
     override fun getItemCount(): Int {

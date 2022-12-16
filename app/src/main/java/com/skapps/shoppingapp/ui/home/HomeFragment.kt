@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.FragmentHomeBinding
 import com.skapps.shoppingapp.ui.home.adapter.HomeParentRcvAdapter
 import com.skapps.shoppingapp.utils.DefaultchangeStatusBarColor
+import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 
 class HomeFragment : Fragment() {
 
@@ -50,13 +52,17 @@ class HomeFragment : Fragment() {
     private fun observeLiveData(){
         viewModel.products.observe(viewLifecycleOwner) {
             binding.rcvHome.apply {
-                homeParentRcvAdapter = HomeParentRcvAdapter(it)
+                homeParentRcvAdapter = HomeParentRcvAdapter(it){ category, click ->
+                    if (click==HomeClickType.CATEGORY){
+                        val bundle = Bundle()
+                        bundle.putSerializable("cat",category.id)
+                        Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_productsFragment,
+                            bundle)
+                    }
+                }
                 adapter = homeParentRcvAdapter
-                layoutManager =
-                    LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
             }
         }
-
     }
-
 }

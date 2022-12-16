@@ -45,7 +45,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/text_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -54,11 +54,11 @@
                 android:textSize="14sp"
                 android:textStyle="normal|bold"
                 app:layout_constraintBottom_toTopOf="@+id/parentRcv"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                app:layout_constraintEnd_toStartOf="@+id/button_category"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/button_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"

@@ -41,13 +41,21 @@ class CategoryFragment : Fragment() {
     private fun observeLiveData(){
         viewModel.categoryList.observe(viewLifecycleOwner){
             binding.rightRcvCategory.apply {
-                categoryRightAdapter= CategoryRightAdapter(it)
+                categoryRightAdapter= CategoryRightAdapter(it){ category ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("cat",category.id)
+                    findNavController().navigate(R.id.action_categoryFragment_to_productsFragment,bundle)
+                }
                 adapter=categoryRightAdapter
                 layoutManager=GridLayoutManager(requireContext(),2)
                 setHasFixedSize(true)
             }
             binding.leftRcvCategory.apply {
-                categoryLeftAdapter= CategoryLeftAdapter(it)
+                categoryLeftAdapter= CategoryLeftAdapter(it){ category ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("cat",category.id)
+                    findNavController().navigate(R.id.action_categoryFragment_to_productsFragment,bundle)
+                }
                 adapter=categoryLeftAdapter
                 layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
                 setHasFixedSize(true)
