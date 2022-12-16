@@ -7,26 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.skapps.shoppingapp.R
+import com.skapps.shoppingapp.databinding.FragmentProductFeaturesBinding
+import com.skapps.shoppingapp.databinding.FragmentProductsBinding
 
 class ProductsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ProductsFragment()
-    }
-
     private lateinit var viewModel: ProductsViewModel
-
+    private lateinit var binding:FragmentProductsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_products, container, false)
+    ): View {
+        binding= FragmentProductsBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ProductsViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }
