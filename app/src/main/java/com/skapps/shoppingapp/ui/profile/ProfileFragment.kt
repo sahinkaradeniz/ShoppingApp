@@ -28,6 +28,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         observeLiveData()
+        viewModel.getCustomer(1)
         binding.favoriButtonProfile.setOnClickListener {
         }
         binding.backProfile.setOnClickListener {
