@@ -2,9 +2,9 @@ package com.skapps.shoppingapp.data.remote
 
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.data.model.Customer
+import com.skapps.shoppingapp.data.model.CustomerResponce
 import com.skapps.shoppingapp.data.model.Product
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ShoppingApiService{
     @GET("v1/product")
@@ -21,4 +21,7 @@ interface ShoppingApiService{
 
     @GET("/v1/customer/{customerId}")
     suspend fun getCustomer(@Path("customerId") id :Int):Customer
+
+    @PUT("v1/customer/{customerId}")
+    suspend fun updateCustomer(@Path("customerId") id:Int, @Body customer: CustomerResponce ):Customer
 }

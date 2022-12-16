@@ -30,7 +30,7 @@ class ProfileFragment : Fragment() {
         observeLiveData()
         binding.favoriButtonProfile.setOnClickListener {
         }
-        binding.backHome2.setOnClickListener {
+        binding.backProfile.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.logoutButton.setOnClickListener {
@@ -39,6 +39,9 @@ class ProfileFragment : Fragment() {
                 .setConfirmText("Çıkış")
                 .setConfirmClickListener {findNavController().popBackStack()}
                 .show()
+        }
+        binding.moneyButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_walletDialogFragment)
         }
         super.onViewCreated(view, savedInstanceState)
     }

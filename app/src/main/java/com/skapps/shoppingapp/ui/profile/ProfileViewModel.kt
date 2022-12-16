@@ -18,7 +18,7 @@ class ProfileViewModel : ViewModel() {
         getCustomer(1)
 
     }
-    private fun getCustomer(id:Int){
+     fun getCustomer(id:Int){
         viewModelScope.launch {
             try {
                 _customer.value=ShoppingApi.retrofitService.getCustomer(id)

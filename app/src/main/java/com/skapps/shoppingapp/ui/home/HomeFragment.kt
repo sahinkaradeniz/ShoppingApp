@@ -33,7 +33,9 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.editText.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+                val action=HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                findNavController().navigate(action)
+            //    findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
             }
         }
         binding.profileButton.setOnClickListener {
