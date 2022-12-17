@@ -5,6 +5,7 @@ import com.skapps.shoppingapp.data.model.Customer
 import com.skapps.shoppingapp.data.responce.CustomerResponce
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Purchase
+import com.skapps.shoppingapp.data.responce.PurchaseResponce
 import retrofit2.http.*
 
 interface ShoppingApiService{
@@ -28,4 +29,7 @@ interface ShoppingApiService{
 
     @POST("/v1/customer/1/purchase")
     suspend fun makepurchase(@Body purchase: Purchase)
+
+    @GET("/v1/customer/{customerId}/purchase")
+    suspend fun getAllPurchases(@Path("customerId") id:Int):PurchaseResponce
 }
