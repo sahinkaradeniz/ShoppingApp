@@ -86,7 +86,6 @@ class PurchaseViewModel : ViewModel() {
             try {
                 ShoppingApi.retrofitService.makepurchase(purchases)
                 _apiStatus.value=ApiStatus.DONE
-                Log.e(TAG,"tmamam")
             }catch (e:Exception){
                 _apiStatus.value=ApiStatus.ERROR
                 Log.e(TAG,this@PurchaseViewModel.toString()+e.toString())
