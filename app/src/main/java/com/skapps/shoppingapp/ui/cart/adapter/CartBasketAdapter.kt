@@ -20,7 +20,7 @@ class CartBasketAdapter(
         fun bind(product: Product) {
             val price = "${product.price} TL"
             binding.brandNameBasket.text = product.brand
-            binding.productNameBasket.text = product.model
+            binding.productNameBasket.text = product.description
             binding.basketTotalPrice.text = price
             binding.imageView4.downloadImage(product.imageUuid)
             binding.bvPieceText.text = product.stockQuantity.toString()
