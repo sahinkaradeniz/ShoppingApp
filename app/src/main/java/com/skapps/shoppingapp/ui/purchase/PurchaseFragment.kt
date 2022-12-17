@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
+import com.skapps.shoppingapp.data.model.Purchase
 import com.skapps.shoppingapp.data.remote.ApiStatus
+import com.skapps.shoppingapp.data.remote.PurchaseStatus
 import com.skapps.shoppingapp.databinding.FragmentPurchaseBinding
 import com.skapps.shoppingapp.ui.purchase.adapter.PurhaceProductAdapter
-import com.skapps.shoppingapp.utils.convertPricetoTL
-import com.skapps.shoppingapp.utils.hide
-import com.skapps.shoppingapp.utils.show
+import com.skapps.shoppingapp.utils.*
+import kotlinx.coroutines.delay
 
 class PurchaseFragment : Fragment() {
 
@@ -47,6 +48,7 @@ class PurchaseFragment : Fragment() {
         binding.cardView7.hide()
         binding.nestedScrollView2.hide()
         binding.erorText.hide()
+        binding.spinProggres.hide()
     }
 
     private fun showViewCompanent() {
@@ -54,13 +56,14 @@ class PurchaseFragment : Fragment() {
         binding.nestedScrollView2.show()
         binding.progressBarPurhase.hide()
         binding.erorText.hide()
+        binding.spinProggres.hide()
     }
 
     private fun apiErorViewCompanent() {
         hideViewCompanent()
         binding.erorText.show()
+        binding.spinProggres.hide()
     }
-
     private fun observeLiveData() {
         viewModel.apiStatus.observe(viewLifecycleOwner) { status ->
             when (status) {
@@ -72,6 +75,31 @@ class PurchaseFragment : Fragment() {
                 }
                 ApiStatus.DONE -> {
                     showViewCompanent()
+                }
+            }
+        }
+        viewModel.purchaseStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                PurchaseStatus.LOADING -> {
+                    binding.spinProggres.show()
+                    binding.basketBuyButton.isClickable=false
+                    binding.textComplateView.text="Sipariş Tamamlanıyor.."
+                }
+                PurchaseStatus.ERROR -> {
+                    apiErorViewCompanent()
+                    binding.textComplateView.text="Bir Sorun Oluştu."
+                    binding.basketBuyButton.isClickable=true
+                    binding.spinProggres.hide()
+                    requireContext().warningToast("Bir sorun oluştu")
+                }
+                PurchaseStatus.DONE -> {
+                    showViewCompanent()
+                    binding.basketBuyButton.isClickable=true
+                    binding.textComplateView.text="Sipariş Tamamlandı."
+                    binding.spinProggres.hide()
+                    requireContext().succesAlert("Sipariş Tamamlandı","Tamam")
+                    viewModel.deleteBasket(requireContext())
+                    findNavController().popBackStack()
                 }
             }
         }

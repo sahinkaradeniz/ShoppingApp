@@ -16,12 +16,14 @@ import com.skapps.shoppingapp.databinding.FragmentCartBinding
 import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.customView.enums.CartClickType
 import com.skapps.shoppingapp.utils.toast
+import com.skapps.shoppingapp.utils.warningAlert
 
 class CartFragment : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
     private lateinit var viewModel: CartViewModel
     private lateinit var cartBasketAdapter: CartBasketAdapter
+    private var cartSize=0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -67,11 +69,14 @@ class CartFragment : Fragment() {
         }
         viewModel.basketSize.observe(viewLifecycleOwner){
                 binding.basketSizeText.text="Ürünler Toplam ($it)"
+            cartSize=it
         }
         binding.basketBuyButton.setOnClickListener{
-            findNavController().navigate(R.id.action_cartFragment_to_purchaseFragment)
+            if (cartSize>0){
+                findNavController().navigate(R.id.action_cartFragment_to_purchaseFragment)
+            }else{
+                requireContext().warningAlert("Sepetinizde henüz ürün yok ","Tamam")
+            }
         }
-
-
     }
 }

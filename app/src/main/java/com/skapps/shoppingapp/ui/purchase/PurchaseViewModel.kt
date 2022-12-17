@@ -80,6 +80,16 @@ class PurchaseViewModel : ViewModel() {
             purchases.orderedProducts=purchaseProduct
         }
     }
+     fun deleteBasket(context: Context){
+        viewModelScope.launch {
+            try {
+                basketLocalDatabase.deleteAllBasket(context)
+                getAllBasketList(context)
+            }catch (e:Exception){
+                Log.e(TAG,e.message.toString())
+            }
+        }
+    }
 
      fun purchaseProducts(){
         viewModelScope.launch {
@@ -87,6 +97,7 @@ class PurchaseViewModel : ViewModel() {
             try {
                 ShoppingApi.retrofitService.makepurchase(purchases)
                 _purchaseStatus.value=PurchaseStatus.DONE
+
             }catch (e:Exception){
                 _purchaseStatus.value=PurchaseStatus.ERROR
                 Log.e(TAG,this@PurchaseViewModel.toString()+e.toString())

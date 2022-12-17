@@ -28,6 +28,14 @@ class BasketLocalDatabase{
             }
 
     }
+    fun deleteAllBasket(context: Context){
+        try {
+            basketDatabase= BasketDatabase.getBookDatabase(context)!!
+            basketDatabase.getBasketDao().deleteAllBasket()
+        }catch (e :Exception){
+            Log.e(TAG,e.message.toString())
+        }
+    }
     fun deleteProductBasket(product: Product,context: Context){
             try {
                 basketDatabase= BasketDatabase.getBookDatabase(context)!!
@@ -35,7 +43,6 @@ class BasketLocalDatabase{
             }catch (e :Exception){
                 Log.e(TAG,e.message.toString())
             }
-
     }
 
     fun minusProductBasket(product: Product,context:Context){
