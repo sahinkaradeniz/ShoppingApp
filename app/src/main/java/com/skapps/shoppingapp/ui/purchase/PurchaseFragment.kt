@@ -26,9 +26,9 @@ class PurchaseFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(PurchaseViewModel::class.java)
-        binding.button.setOnClickListener {
+       /* binding.button.setOnClickListener {
             viewModel.purchaseProducts()
-        }
+        }*/
         viewModel.getAllBasketList(requireContext())
     }
 
