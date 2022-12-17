@@ -9,6 +9,17 @@
         android:layout_height="match_parent"
         tools:context=".ui.purchase.PurchaseFragment">
 
+        <ProgressBar
+            android:id="@+id/progressBarPurhase"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView7"
             android:layout_width="0dp"
@@ -22,7 +33,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/basket_size_text"
+                    android:id="@+id/basket_qunt_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -48,7 +59,8 @@
                     app:cornerRadius="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/basket_price_text"
@@ -59,11 +71,12 @@
                     android:textSize="19sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/basket_buy_button"
-                    app:layout_constraintStart_toStartOf="@+id/basket_size_text" />
+                    app:layout_constraintStart_toStartOf="@+id/basket_qunt_text" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -83,7 +96,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Sipariş İçeriği "
                     android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/rcv_purchase_fragment"
                     app:layout_constraintStart_toStartOf="@+id/cardView8"
                     app:layout_constraintTop_toBottomOf="@+id/cardView9" />
 
@@ -115,7 +128,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/user_address_purchase"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -134,8 +147,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="İsim : "
-                            app:layout_constraintStart_toStartOf="@+id/textView19"
-                            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                            app:layout_constraintStart_toStartOf="@+id/user_address_purchase"
+                            app:layout_constraintTop_toBottomOf="@+id/user_address_purchase" />
 
                         <TextView
                             android:id="@+id/textView22"
@@ -147,7 +160,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
                         <TextView
-                            android:id="@+id/textView24"
+                            android:id="@+id/user_phone_purchase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -160,7 +173,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
-                            android:id="@+id/textView23"
+                            android:id="@+id/user_name_purchase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -176,9 +189,10 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/rcv_purchase_fragment"
                     android:layout_width="0dp"
                     android:layout_height="400dp"
+                    android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
@@ -214,7 +228,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView27"
+                            android:id="@+id/user_budget_purchase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -230,12 +244,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-                <ProgressBar
-                    android:id="@+id/progressBarPurhase"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/erorText"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="Üzgünüz bir sorun oluştu. İnternet Ayalarlarınızı kontrol ederek tekrar deneyiniz."
+                    android:textSize="20sp"
+                    android:textStyle="normal|bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

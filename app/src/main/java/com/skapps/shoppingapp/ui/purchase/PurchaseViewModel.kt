@@ -12,6 +12,7 @@ import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Purchase
 import com.skapps.shoppingapp.data.model.PurchaseProduct
 import com.skapps.shoppingapp.data.remote.ApiStatus
+import com.skapps.shoppingapp.data.remote.PurchaseStatus
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import kotlinx.coroutines.launch
 
@@ -26,8 +27,8 @@ class PurchaseViewModel : ViewModel() {
     val totalPrice:LiveData<Double> get() = _totalPrice
     private var _productQuantity=MutableLiveData<Int>()
     val productQuantity:LiveData<Int> get() = _productQuantity
-    private var _purchase= MutableLiveData<Purchase> ()
-    val purchase:LiveData<Purchase> get() = _purchase
+    private var _purchaseStatus= MutableLiveData<PurchaseStatus>()
+    val purchaseStatus:LiveData<PurchaseStatus> get() = _purchaseStatus
     private val basketLocalDatabase=BasketLocalDatabase()
     private val TAG="Purchase View Model"
     private val purchases=Purchase(1, listOf(),"A")
@@ -82,12 +83,12 @@ class PurchaseViewModel : ViewModel() {
 
      fun purchaseProducts(){
         viewModelScope.launch {
-            _apiStatus.value=ApiStatus.LOADING
+            _purchaseStatus.value=PurchaseStatus.LOADING
             try {
                 ShoppingApi.retrofitService.makepurchase(purchases)
-                _apiStatus.value=ApiStatus.DONE
+                _purchaseStatus.value=PurchaseStatus.DONE
             }catch (e:Exception){
-                _apiStatus.value=ApiStatus.ERROR
+                _purchaseStatus.value=PurchaseStatus.ERROR
                 Log.e(TAG,this@PurchaseViewModel.toString()+e.toString())
             }
         }
