@@ -10,10 +10,6 @@ import com.skapps.shoppingapp.R
 
 class HistoryPurchaseFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HistoryPurchaseFragment()
-    }
-
     private lateinit var viewModel: HistoryPurchaseViewModel
 
     override fun onCreateView(
@@ -23,10 +19,10 @@ class HistoryPurchaseFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_history_purchase, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HistoryPurchaseViewModel::class.java)
-        // TODO: Use the ViewModel
     }
+
 
 }
