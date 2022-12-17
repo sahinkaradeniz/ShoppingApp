@@ -7,26 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.skapps.shoppingapp.R
+import com.skapps.shoppingapp.databinding.FragmentPurchaseBinding
 
 class PurchaseFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PurchaseFragment()
-    }
 
     private lateinit var viewModel: PurchaseViewModel
-
+    private lateinit var binding:FragmentPurchaseBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_purchase, container, false)
+        binding=FragmentPurchaseBinding.inflate(layoutInflater)
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(PurchaseViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.button.setOnClickListener {
+            viewModel.purchaseProducts()
+        }
+        viewModel.getAllBasketList(requireContext())
     }
 
 }

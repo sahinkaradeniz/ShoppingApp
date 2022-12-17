@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.ui.cart.adapter.CartBasketAdapter
@@ -67,6 +68,10 @@ class CartFragment : Fragment() {
         viewModel.basketSize.observe(viewLifecycleOwner){
                 binding.basketSizeText.text="Ürünler Toplam ($it)"
         }
+        binding.basketBuyButton.setOnClickListener{
+            findNavController().navigate(R.id.action_cartFragment_to_purchaseFragment)
+        }
+
 
     }
 }
