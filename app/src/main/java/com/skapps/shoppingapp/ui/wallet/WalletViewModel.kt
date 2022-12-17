@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.model.Customer
-import com.skapps.shoppingapp.data.model.CustomerResponce
+import com.skapps.shoppingapp.data.responce.CustomerResponce
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import kotlinx.coroutines.launch
 
@@ -35,7 +35,7 @@ class WalletViewModel : ViewModel() {
             try {
                 val customer=_customer.value!!
                 customer.budget=customer.budget?.plus(money)
-                val c=CustomerResponce(customer.name,customer.surname,customer.email,customer.phoneNumber,customer.budget)
+                val c= CustomerResponce(customer.name,customer.surname,customer.email,customer.phoneNumber,customer.budget)
                 _customer.value=ShoppingApi.retrofitService.updateCustomer(customer.id!!,c)
                 getCustomer(customer.id!!)
                 _moneyStatus.value=true

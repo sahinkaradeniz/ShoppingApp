@@ -9,6 +9,7 @@ import com.skapps.shoppingapp.data.model.Search
 @Dao
 interface SearchDao {
     @Query("Select * from search")
+    fun getAllSearchHistory():List<Search>
     @Insert
     fun addSearchHistory(search: Search)
     @Delete
