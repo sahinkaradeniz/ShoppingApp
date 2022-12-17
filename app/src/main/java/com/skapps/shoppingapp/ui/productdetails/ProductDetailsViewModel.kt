@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.model.Comment
 import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.data.remote.ApiStatus
+import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import kotlinx.coroutines.launch
 
@@ -27,12 +27,12 @@ class ProductDetailsViewModel: ViewModel() {
 
    fun getProduct(productId:Int){
       viewModelScope.launch {
-          _status.value=ApiStatus.LOADING
+          _status.value= ApiStatus.LOADING
           try {
-              _status.value=ApiStatus.DONE
+              _status.value= ApiStatus.DONE
               _detailsProduct.value= ShoppingApi.retrofitService.getProduct(productId)
           }catch (e : Exception){
-              _status.value=ApiStatus.ERROR
+              _status.value= ApiStatus.ERROR
               Log.e(TAG,"Api eror ${e.message.toString()}")
           }
       }

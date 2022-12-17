@@ -8,14 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.data.model.Purchase
-import com.skapps.shoppingapp.data.remote.ApiStatus
-import com.skapps.shoppingapp.data.remote.PurchaseStatus
+import com.skapps.shoppingapp.data.remote.status.ApiStatus
+import com.skapps.shoppingapp.data.remote.status.PurchaseStatus
 import com.skapps.shoppingapp.databinding.FragmentPurchaseBinding
 import com.skapps.shoppingapp.ui.purchase.adapter.PurhaceProductAdapter
 import com.skapps.shoppingapp.utils.*
-import kotlinx.coroutines.delay
 
 class PurchaseFragment : Fragment() {
 

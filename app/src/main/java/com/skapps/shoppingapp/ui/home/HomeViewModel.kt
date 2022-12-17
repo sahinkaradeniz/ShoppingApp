@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.base.BaseViewModel
 import com.skapps.shoppingapp.data.model.Category
-import com.skapps.shoppingapp.data.remote.ApiStatus
+import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import kotlinx.coroutines.launch
 
@@ -22,12 +22,12 @@ class HomeViewModel(application: Application):BaseViewModel(application) {
 
     private fun getAllProductList(){
         viewModelScope.launch {
-            _status.value=ApiStatus.LOADING
+            _status.value= ApiStatus.LOADING
             try {
                _productList.value=ShoppingApi.retrofitService.getAllCategory()
-                _status.value=ApiStatus.DONE
+                _status.value= ApiStatus.DONE
             }catch (e : Exception){
-                _status.value=ApiStatus.ERROR
+                _status.value= ApiStatus.ERROR
                 _productList.value= ArrayList()
                 Log.e("AllProd",e.message.toString())
             }

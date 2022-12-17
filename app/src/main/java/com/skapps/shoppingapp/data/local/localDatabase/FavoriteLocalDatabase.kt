@@ -1,11 +1,10 @@
-package com.skapps.shoppingapp.data.local
+package com.skapps.shoppingapp.data.local.localDatabase
 
 import android.content.Context
 import android.util.Log
+import com.skapps.shoppingapp.data.local.database.FavoriteDatabase
 import com.skapps.shoppingapp.data.model.Favorite
 import com.skapps.shoppingapp.data.model.Product
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class FavoriteLocalDatabase {
     private var TAG="FavoriteLocalDatabase"
@@ -13,7 +12,7 @@ class FavoriteLocalDatabase {
 
     fun addFavorite(product: Product, context: Context){
         try {
-            favoriteDatabase=FavoriteDatabase.getFavoriteDatabase(context)!!
+            favoriteDatabase= FavoriteDatabase.getFavoriteDatabase(context)!!
             favoriteDatabase.getFavoriteDao().addFavorite(convertProductToFavorite(product))
         }catch (e:Exception){
             Log.e(TAG,e.message.toString())
@@ -29,7 +28,7 @@ class FavoriteLocalDatabase {
     }
     fun getAllFavorites(context: Context):List<Favorite>{
         try {
-            favoriteDatabase=FavoriteDatabase.getFavoriteDatabase(context)!!
+            favoriteDatabase= FavoriteDatabase.getFavoriteDatabase(context)!!
            return favoriteDatabase.getFavoriteDao().getAllFavorites()
         }catch (e:Exception){
             Log.e(TAG,e.message.toString())

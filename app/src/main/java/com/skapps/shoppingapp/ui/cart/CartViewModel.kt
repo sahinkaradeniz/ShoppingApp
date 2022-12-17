@@ -5,10 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.skapps.shoppingapp.data.local.BasketDatabase
-import com.skapps.shoppingapp.data.local.BasketLocalDatabase
-import com.skapps.shoppingapp.data.local.FavoriteDatabase
-import com.skapps.shoppingapp.data.model.Basket
+import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
 import com.skapps.shoppingapp.data.model.Product
 import kotlinx.coroutines.launch
 

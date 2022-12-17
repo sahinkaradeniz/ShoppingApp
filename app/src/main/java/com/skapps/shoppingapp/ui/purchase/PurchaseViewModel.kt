@@ -6,13 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.skapps.shoppingapp.data.local.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
 import com.skapps.shoppingapp.data.model.Customer
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Purchase
 import com.skapps.shoppingapp.data.model.PurchaseProduct
-import com.skapps.shoppingapp.data.remote.ApiStatus
-import com.skapps.shoppingapp.data.remote.PurchaseStatus
+import com.skapps.shoppingapp.data.remote.status.ApiStatus
+import com.skapps.shoppingapp.data.remote.status.PurchaseStatus
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import kotlinx.coroutines.launch
 
@@ -29,20 +29,20 @@ class PurchaseViewModel : ViewModel() {
     val productQuantity:LiveData<Int> get() = _productQuantity
     private var _purchaseStatus= MutableLiveData<PurchaseStatus>()
     val purchaseStatus:LiveData<PurchaseStatus> get() = _purchaseStatus
-    private val basketLocalDatabase=BasketLocalDatabase()
+    private val basketLocalDatabase= BasketLocalDatabase()
     private val TAG="Purchase View Model"
     private val purchases=Purchase(1, listOf(),"A")
 
     private fun getUser(userid:Int){
-        _apiStatus.value=ApiStatus.LOADING
+        _apiStatus.value= ApiStatus.LOADING
         viewModelScope.launch {
             try {
                 _user.value=ShoppingApi.retrofitService.getCustomer(userid)
                 purchases.customerId=_user.value!!.id
                 purchases.status=_user.value!!.status
-                _apiStatus.value=ApiStatus.DONE
+                _apiStatus.value= ApiStatus.DONE
             }catch (e:Exception){
-                _apiStatus.value=ApiStatus.ERROR
+                _apiStatus.value= ApiStatus.ERROR
                 Log.e(TAG,this.toString()+e.toString())
             }
         }
@@ -93,13 +93,13 @@ class PurchaseViewModel : ViewModel() {
 
      fun purchaseProducts(){
         viewModelScope.launch {
-            _purchaseStatus.value=PurchaseStatus.LOADING
+            _purchaseStatus.value= PurchaseStatus.LOADING
             try {
                 ShoppingApi.retrofitService.makepurchase(purchases)
-                _purchaseStatus.value=PurchaseStatus.DONE
+                _purchaseStatus.value= PurchaseStatus.DONE
 
             }catch (e:Exception){
-                _purchaseStatus.value=PurchaseStatus.ERROR
+                _purchaseStatus.value= PurchaseStatus.ERROR
                 Log.e(TAG,this@PurchaseViewModel.toString()+e.toString())
             }
         }

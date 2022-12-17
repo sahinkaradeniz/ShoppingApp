@@ -7,10 +7,9 @@ import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.data.local.BasketLocalDatabase
-import com.skapps.shoppingapp.data.local.FavoriteLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
-import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
 import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
 import com.skapps.shoppingapp.utils.succesToast
@@ -20,8 +19,8 @@ class HomeParentRcvAdapter(private var productList: List<Category>,private var o
 
     class HomeParentViewHolder(val binding: RowParentHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
-            val basketLocalDatabase=BasketLocalDatabase()
-            val favoriteLocalDatabase=FavoriteLocalDatabase()
+            val basketLocalDatabase= BasketLocalDatabase()
+            val favoriteLocalDatabase= FavoriteLocalDatabase()
             binding.parentText.text = category.categoryName
             val childRcvAdapter = HomeChildRcvAdapter(category.products) { product, click ->
                 when (click) {

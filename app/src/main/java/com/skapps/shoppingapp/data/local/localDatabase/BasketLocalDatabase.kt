@@ -1,11 +1,9 @@
-package com.skapps.shoppingapp.data.local
+package com.skapps.shoppingapp.data.local.localDatabase
 
 import android.content.Context
 import android.util.Log
+import com.skapps.shoppingapp.data.local.database.BasketDatabase
 import com.skapps.shoppingapp.data.model.Product
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class BasketLocalDatabase{
     private lateinit var basketDatabase: BasketDatabase

@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.data.local
+package com.skapps.shoppingapp.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -6,10 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.skapps.shoppingapp.data.local.BasketLocalDatabase
-import com.skapps.shoppingapp.data.local.FavoriteLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
-import com.skapps.shoppingapp.data.model.Favorite
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import com.skapps.shoppingapp.utils.succesToast

@@ -1,10 +1,10 @@
-package com.skapps.shoppingapp.data.local
+package com.skapps.shoppingapp.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.data.local.dao.SearchDao
 import com.skapps.shoppingapp.data.model.Search
 
 @Database(entities = [Search::class], version = 1)
