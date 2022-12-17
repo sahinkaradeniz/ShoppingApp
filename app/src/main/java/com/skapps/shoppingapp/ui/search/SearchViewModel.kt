@@ -14,6 +14,22 @@ class SearchViewModel(): ViewModel() {
     val searchHistory:LiveData<List<Search>> get() = _searchHistory
     private val searchLocalDatabase=SearchLocalDatabase()
 
-  
+    fun gellAllHistory(context: Context){
+       viewModelScope.launch {
+         _searchHistory.value=  searchLocalDatabase.getAllSearchHistory(context)
+       }
+    }
 
+    fun addSearch(searchText:String,context: Context){
+        viewModelScope.launch {
+            val search=Search(searchText)
+           searchLocalDatabase.addSearch(search, context)
+        }
+    }
+
+    fun deleteSearch(search: Search,context: Context){
+        viewModelScope.launch {
+            searchLocalDatabase.deleteSearch(search, context)
+        }
+    }
 }

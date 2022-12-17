@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.skapps.shoppingapp.adapter.SearchHistoryRcvAdapter
-import com.skapps.shoppingapp.adapter.SearchProductAdapter
+import com.skapps.shoppingapp.ui.search.adapter.SearchHistoryRcvAdapter
+import com.skapps.shoppingapp.ui.search.adapter.SearchProductAdapter
 import com.skapps.shoppingapp.databinding.FragmentSearchBinding
 import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.data.model.SearchHistory
+import com.skapps.shoppingapp.utils.customView.enums.HistoryClickType
 
 class SearchFragment : Fragment() {
 
@@ -23,47 +23,52 @@ class SearchFragment : Fragment() {
     private lateinit var searchProductAdapter: SearchProductAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentSearchBinding.inflate(inflater)
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        val history = SearchHistory("1", "Ceket")
-        val history2 = SearchHistory("1", "Ayakkabı ipi")
-        val historyList = ArrayList<SearchHistory>()
-        historyList.add(history)
-        historyList.add(history2)
-        historyList.add(history)
-        historyList.add(history2)
-        historyList.add(history)
-        binding.rcvSearchHistory.apply {
-            searchHistoryRcvAdapter = SearchHistoryRcvAdapter(historyList)
-            layoutManager =
-                LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = searchHistoryRcvAdapter
+        observeLiveData()
+        viewModel.gellAllHistory(requireContext())
+        binding.backHome.setOnClickListener {
+            findNavController().popBackStack()
         }
-        val product = Product()
-        val productList = ArrayList<Product>()
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
-        productList.add(product)
+
+        binding.input.setStartIconOnClickListener {
+            val searchText = binding.input.editText?.text.toString()
+            viewModel.addSearch(searchText, requireContext())
+            viewModel.gellAllHistory(requireContext())
+        }
+
         binding.rcvSearchProduct.apply {
-            searchProductAdapter = SearchProductAdapter(productList)
+            searchProductAdapter = SearchProductAdapter(arrayListOf())
             layoutManager = GridLayoutManager(binding.root.context, 2)
             adapter = searchProductAdapter
         }
-        binding.backHome.setOnClickListener {
-            findNavController().popBackStack()
-           // findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment2)
-        }
-
     }
+
+    private fun observeLiveData() {
+        viewModel.searchHistory.observe(viewLifecycleOwner) { historyList ->
+            binding.rcvSearchHistory.apply {
+                searchHistoryRcvAdapter = SearchHistoryRcvAdapter(historyList){ search ,click ->
+                    when(click){
+                        HistoryClickType.Search -> {
+
+                        }
+                        HistoryClickType.Delete -> {
+                            viewModel.deleteSearch(search,requireContext())
+                            viewModel.gellAllHistory(requireContext())
+                        }
+                    }
+                }
+                layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = searchHistoryRcvAdapter
+            }
+        }
+    }
+
 }
