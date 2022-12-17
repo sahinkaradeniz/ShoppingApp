@@ -86,20 +86,19 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/basket_size_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/raleway"
                 android:text="Ürünler Toplam"
                 android:textColor="@color/main_orange_color"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button" />
+                app:layout_constraintTop_toTopOf="@+id/basket_buy_button" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button"
+                android:id="@+id/basket_buy_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -116,15 +115,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/basket_price_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1234 TL"
                 android:textColor="@color/black"
                 android:textSize="19sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/button"
-                app:layout_constraintStart_toStartOf="@+id/textView" />
+                app:layout_constraintBottom_toBottomOf="@+id/basket_buy_button"
+                app:layout_constraintStart_toStartOf="@+id/basket_size_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

@@ -7,13 +7,11 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@OptIn(DelicateCoroutinesApi::class)
 class BasketLocalDatabase{
     private lateinit var basketDatabase: BasketDatabase
     private var TAG="BasketLocalDatabase"
 
     fun  addBasket(product: Product,context: Context){
-         GlobalScope.launch {
             try {
                 val basketList=getAllBasket(context)
                 basketDatabase= BasketDatabase.getBookDatabase(context)!!
@@ -28,21 +26,19 @@ class BasketLocalDatabase{
             }catch (e:Exception){
                 Log.e(TAG,e.message.toString())
             }
-        }
+
     }
     fun deleteProductBasket(product: Product,context: Context){
-        GlobalScope.launch{
             try {
                 basketDatabase= BasketDatabase.getBookDatabase(context)!!
                 basketDatabase.getBasketDao().deleteProductBasket(product)
             }catch (e :Exception){
                 Log.e(TAG,e.message.toString())
             }
-        }
+
     }
 
     fun minusProductBasket(product: Product,context:Context){
-        GlobalScope.launch{
             basketDatabase= BasketDatabase.getBookDatabase(context)!!
             try {
                 if (product.stockQuantity==1){
@@ -57,7 +53,7 @@ class BasketLocalDatabase{
             }catch (e : Exception){
                 Log.e(TAG,e.message.toString())
             }
-        }
+
     }
 
     private  fun control(list: List<Product>,product: Product):Product{
@@ -74,6 +70,22 @@ class BasketLocalDatabase{
     fun getAllBasket(context: Context):List<Product>{
             basketDatabase= BasketDatabase.getBookDatabase(context)!!
             return basketDatabase.getBasketDao().getBasket()
+    }
+
+    fun getBasketTotalPrice(basketList:List<Product>):Double{
+        var totalPrice =0.0
+        for (i in basketList){
+            totalPrice= i.price?.let { totalPrice.plus(it)}!!
+        }
+        return  totalPrice
+    }
+
+    fun getBasketProductSize(basketList:List<Product>):Int{
+        var totalSize=0
+        for (i in basketList){
+            totalSize= i.stockQuantity?.let { totalSize.plus(it)}!!
+        }
+        return totalSize
     }
 
 }
