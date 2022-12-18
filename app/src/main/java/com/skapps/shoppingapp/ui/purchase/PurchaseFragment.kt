@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.data.remote.status.PurchaseStatus
 import com.skapps.shoppingapp.databinding.FragmentPurchaseBinding
@@ -20,11 +21,13 @@ class PurchaseFragment : Fragment() {
     private lateinit var viewModel: PurchaseViewModel
     private lateinit var binding: FragmentPurchaseBinding
     private lateinit var pruchaseAdapter: PurhaceProductAdapter
+    private  var navigationControl=0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentPurchaseBinding.inflate(layoutInflater)
+
         return binding.root
     }
 
@@ -95,8 +98,9 @@ class PurchaseFragment : Fragment() {
                     binding.textComplateView.text="Sipariş Tamamlandı."
                     binding.spinProggres.hide()
                     requireContext().succesAlert("Sipariş Tamamlandı","Tamam")
+
                     viewModel.deleteBasket(requireContext())
-                    findNavController().popBackStack()
+                    findNavController().navigate(R.id.action_purchaseFragment_to_historyPurchaseFragment)
                 }
             }
         }

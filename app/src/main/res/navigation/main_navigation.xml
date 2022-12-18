@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_homeFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyPurchaseFragment"
+            app:destination="@id/historyPurchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -152,5 +155,12 @@
         <action
             android:id="@+id/action_purchaseFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_historyPurchaseFragment"
+            app:destination="@id/historyPurchaseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historyPurchaseFragment"
+        android:name="com.skapps.shoppingapp.ui.purchaseHistory.HistoryPurchaseFragment"
+        android:label="HistoryPurchaseFragment" />
 </navigation>

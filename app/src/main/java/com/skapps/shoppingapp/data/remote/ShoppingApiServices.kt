@@ -31,5 +31,5 @@ interface ShoppingApiService{
     suspend fun makepurchase(@Body purchase: Purchase)
 
     @GET("/v1/customer/{customerId}/purchase")
-    suspend fun getAllPurchases(@Path("customerId") id:Int):PurchaseResponce
+    suspend fun getAllPurchases(@Path("customerId") id:Int):List<PurchaseResponce>
 }
