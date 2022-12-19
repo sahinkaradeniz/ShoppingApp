@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
@@ -17,10 +18,10 @@ import com.skapps.shoppingapp.utils.*
 
 class ProductDetailsFragment : Fragment() {
     private var productId:Int=0
+    private var commentSize:Int=0
     private lateinit var viewModel: ProductDetailsViewModel
     private lateinit var binding: FragmentProductDetailsBinding
     private lateinit var rcvAdapter: ProductCommentAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -44,9 +45,9 @@ class ProductDetailsFragment : Fragment() {
 
     private fun observeLiveData(){
         viewModel.commentList.observe(viewLifecycleOwner){
+            commentSize=it.size
             binding.rcvProductComment.apply {
                 rcvAdapter= ProductCommentAdapter(1,it){ comment ->
-                //    Toast.makeText(requireContext(),"Tık",Toast.LENGTH_SHORT).show()
                 }
                 adapter=rcvAdapter
                 layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
@@ -87,9 +88,14 @@ class ProductDetailsFragment : Fragment() {
     }
     private fun clickFragment(){
         binding.commentDetailsProduct.setOnClickListener {
-            //     val bundle=Bundle()
-            //      bundle.putSerializable("productid",product.name)
-            //     findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+            if (commentSize==0){
+                requireContext().toast("Henüz bir yorum yapılmadı")
+            }else{
+                val bundle = Bundle()
+                bundle.putSerializable("product",productId)
+                Navigation.findNavController(binding.root).navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,
+                    bundle)
+            }
         }
         binding.productFeatures.setOnClickListener {
             findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)

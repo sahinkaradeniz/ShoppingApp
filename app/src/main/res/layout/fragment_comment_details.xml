@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.commentDetails.CommentDetailsFragment">
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progress_comment_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.github.ybq.android.spinkit.SpinKitView>
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout4"
         android:layout_width="match_parent"
