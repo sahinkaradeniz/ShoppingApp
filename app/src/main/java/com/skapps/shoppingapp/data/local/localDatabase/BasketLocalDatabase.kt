@@ -63,7 +63,7 @@ class BasketLocalDatabase{
     }
 
     private  fun control(list: List<Product>,product: Product):Product{
-        var prod=Product(1,"0","0","0","0",0.0,0,0,"0","0","0")
+        var prod=Product(1,"0","0","0","0",0.0,0,0.0,"0","0","0")
         for (i in list){
             if (i.id==product.id){
                 prod=i

@@ -33,7 +33,7 @@ data class Favorite (
     var stockQuantity : Int?    = null,
     @ColumnInfo(name="averageRating")
     @SerializedName("averageRating" )
-    var averageRating : Int?    = null,
+    var averageRating : Double?    = null,
     @ColumnInfo(name="imageUuid")
     @SerializedName("imageUuid")
     var imageUuid : String? = null,

@@ -35,7 +35,7 @@ class HistoryPurchaseViewModel : ViewModel() {
     }
 
    fun Product.compare(productResponce:List<PurchaseResponce>){
-       var product=Product(1,"","","","",0.0,0,0,"","","")
+       var product=Product(1,"","","","",0.0,0,0.0,"","","")
         viewModelScope.launch {
             try {
                 val count=0

@@ -31,7 +31,7 @@ class PurchaseViewModel : ViewModel() {
     val purchaseStatus:LiveData<PurchaseStatus> get() = _purchaseStatus
     private val basketLocalDatabase= BasketLocalDatabase()
     private val TAG="Purchase View Model"
-    private val purchases=Purchase(1, listOf(),"A")
+    private val purchases=Purchase(1, listOf(),"ACTIVE")
 
     private fun getUser(userid:Int){
         _apiStatus.value= ApiStatus.LOADING
