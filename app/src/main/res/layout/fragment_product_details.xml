@@ -7,8 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/progress_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.github.ybq.android.spinkit.SpinKitView>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout5"
+            android:id="@+id/contrailBottom"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/white"
@@ -61,9 +70,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+            app:layout_constraintBottom_toTopOf="@+id/contrailBottom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

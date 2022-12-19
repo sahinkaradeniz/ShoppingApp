@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.adapter.ProductCommentAdapter
+import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.databinding.FragmentProductDetailsBinding
-import com.skapps.shoppingapp.utils.downloadImage
-import com.skapps.shoppingapp.utils.succesToast
+import com.skapps.shoppingapp.utils.*
 
 
 class ProductDetailsFragment : Fragment() {
@@ -37,28 +37,10 @@ class ProductDetailsFragment : Fragment() {
         observeLiveData()
         val bundle = this.arguments
         if (bundle != null) {
-            productId = bundle.getInt("prod", 13)
+            productId = bundle.getInt("prod", )
             viewModel.getProduct(productId)
         }
-        viewModel.getProduct(productId)
-        binding.productCommentText2.setOnClickListener {
-          //     val bundle=Bundle()
-         //      bundle.putSerializable("productid",product.name)
-        //     findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
-        }
-        binding.productFeatures.setOnClickListener {
-            findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)
-        }
-        binding.backButtonDetails.setOnClickListener{
-            findNavController().popBackStack()
-        }
-        binding.productDescription.setOnClickListener {
-            findNavController().navigate(R.id.action_productDetailsFragment_to_productDescriptionFragment)
-        }
-        binding.addBasketButton.setOnClickListener{
-            requireContext().succesToast("Sepete Eklendi")
-        }
-
+        clickFragment()
     }
 
     private fun observeLiveData(){
@@ -80,6 +62,45 @@ class ProductDetailsFragment : Fragment() {
                 productDestcription.text=product.description
                 productRatingText.text=product.averageRating.toString()
             }
+        }
+        viewModel.status.observe(viewLifecycleOwner){ status ->
+            when(status){
+                ApiStatus.LOADING ->{
+                    binding.progressDetails.show()
+                    binding.contrailBottom.hide()
+                    binding.scrollView3.hide()
+                }
+                ApiStatus.DONE -> {
+                    binding.progressDetails.hide()
+                    binding.contrailBottom.show()
+                    binding.scrollView3.show()
+                }
+                ApiStatus.ERROR -> {
+                    binding.progressDetails.hide()
+                    binding.contrailBottom.hide()
+                    binding.scrollView3.hide()
+                    requireContext().warningAlert("Bir sorun oluştu internet ayarlarınızı kontrol ediniz.","Tamam")
+                }
+            }
+        }
+    }
+    private fun clickFragment(){
+        binding.productCommentText2.setOnClickListener {
+            //     val bundle=Bundle()
+            //      bundle.putSerializable("productid",product.name)
+            //     findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
+        }
+        binding.productFeatures.setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailsFragment_to_productFeaturesFragment)
+        }
+        binding.backButtonDetails.setOnClickListener{
+            findNavController().popBackStack()
+        }
+        binding.productDescription.setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailsFragment_to_productDescriptionFragment)
+        }
+        binding.addBasketButton.setOnClickListener{
+            requireContext().succesToast("Sepete Eklendi")
         }
     }
 

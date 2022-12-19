@@ -23,8 +23,6 @@ class ProductDetailsViewModel: ViewModel() {
    val  status:LiveData<ApiStatus>
    get() = _status
 
-   var productId:Int?=null
-
    fun getProduct(productId:Int){
       viewModelScope.launch {
           _status.value= ApiStatus.LOADING
@@ -36,7 +34,6 @@ class ProductDetailsViewModel: ViewModel() {
               Log.e(TAG,"Api eror ${e.message.toString()}")
           }
       }
-
    }
 
 }
