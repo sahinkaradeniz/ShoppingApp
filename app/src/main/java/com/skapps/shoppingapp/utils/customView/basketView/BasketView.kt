@@ -21,7 +21,7 @@ class BasketView @JvmOverloads constructor(
 ) : FrameLayout(context, attributeSet, defStyle){
     private val binding =CustomBasketViewBinding.inflate(LayoutInflater.from(context),this,true)
     private var piece:Int=0
-    var listener:BasketViewListener? = null
+
 
 
     fun addButtonclickListener(addonclick:(view:View)->Unit) {

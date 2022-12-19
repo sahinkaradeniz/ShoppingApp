@@ -13,15 +13,8 @@ class CommentDetailsViewModel : ViewModel() {
         getCommentList()
     }
     private fun getCommentList(){
-        val comment= Comment("2","21312","Sahin Karadeniz","Ürün krık geldi iade edeceğim","4.7")
+  //      val comment= Comment("2","21312","Sahin Karadeniz","Ürün krık geldi iade edeceğim","4.7")
         val commentLis=ArrayList<Comment>()
-        commentLis.add(comment)
-        commentLis.add(comment)
-        commentLis.add(comment)
-        commentLis.add(comment)
-        commentLis.add(comment)
-        commentLis.add(comment)
-        commentLis.add(comment)
         _commentList.value=commentLis
     }
 }

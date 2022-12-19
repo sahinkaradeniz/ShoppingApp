@@ -37,6 +37,7 @@ class ProductDetailsFragment : Fragment() {
         if (bundle != null) {
             productId = bundle.getInt("prod", )
             viewModel.getProduct(productId)
+            viewModel.getAllCommentProduct(productId)
         }
         clickFragment()
     }

@@ -55,7 +55,6 @@ class CommentProductViewModel : ViewModel() {
 
             try {
                 _product.value=ShoppingApi.retrofitService.getProduct(id)
-
             }catch (e:Exception){
                 Log.e(TAG, "get product func: $e")
 

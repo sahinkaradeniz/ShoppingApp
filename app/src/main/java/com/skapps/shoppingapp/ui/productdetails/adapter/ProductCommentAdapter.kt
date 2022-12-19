@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowProductCommentBinding
 import com.skapps.shoppingapp.data.model.Comment
 
-class ProductCommentAdapter(val type:Int,val commentList:ArrayList<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
+class ProductCommentAdapter(val type:Int,val commentList:List<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
     class CommentViewHolder(val binding:RowProductCommentBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(comment: Comment){
-                binding.textProductComment.text=comment.comment
-                binding.textRatingComment.text=comment.rating
-                binding.textUsername.text=comment.username
+                binding.textProductComment.text=comment.content
+                binding.textRatingComment.text=comment.rating.toString()
+                binding.textUsername.text=comment.header
             }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
