@@ -42,9 +42,18 @@ infix fun Context.warningToast(message:String){
 }
 @SuppressLint("CheckResult")
 infix fun Context.succesToast(message:String){
-    Toasty.success(this,message, Toasty.LENGTH_SHORT).show()
+  Toasty.success(this,message, Toasty.LENGTH_SHORT).show()
 }
-
+@SuppressLint("CheckResult")
+fun Context.succesBasketToast(){
+    Toasty.custom(this,"Ürün Sepete Eklendi",
+        R.drawable.ic_outline_shopping_cart_24,R.color.colorPrimary, Toasty.LENGTH_SHORT,true,true).show()
+}
+@SuppressLint("CheckResult")
+fun Context.succesFavoriteToast(){
+    Toasty.custom(this,"Ürün Favorilere Eklendi",
+        R.drawable.ic_outline_favorite_nav,R.color.colorPrimary, Toasty.LENGTH_SHORT,true,true).show()
+}
 fun NavController.safeNavigate(direction: NavDirections) {
     Log.d("safe", "Click happened")
     currentDestination?.getAction(direction.actionId)?.run {

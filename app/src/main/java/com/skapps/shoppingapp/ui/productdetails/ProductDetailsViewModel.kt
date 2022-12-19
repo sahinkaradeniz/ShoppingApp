@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Comment
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.remote.status.ApiStatus
@@ -25,6 +26,7 @@ class ProductDetailsViewModel: ViewModel() {
    val  status:LiveData<ApiStatus>
    get() = _status
    private val basketDatabase=BasketLocalDatabase()
+   private val favoriteDatabase=FavoriteLocalDatabase()
 
    fun getProduct(productId:Int){
       viewModelScope.launch {
@@ -44,6 +46,15 @@ class ProductDetailsViewModel: ViewModel() {
                 _detailsProduct.value?.let {
                     it.stockQuantity=1
                     basketDatabase.addBasket(it, context) }
+            }catch (e:Exception){
+                Log.e("Product Details ViewModel","Add basket Product $e")
+            }
+        }
+    }
+    fun addFavoriteProdut(context: Context){
+        viewModelScope.launch {
+            try {
+                _detailsProduct.value?.let { favoriteDatabase.addFavorite(it, context) }
             }catch (e:Exception){
                 Log.e("Product Details ViewModel","Add basket Product $e")
             }

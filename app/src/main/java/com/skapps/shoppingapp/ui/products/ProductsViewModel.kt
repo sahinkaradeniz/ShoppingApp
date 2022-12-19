@@ -11,6 +11,8 @@ import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.remote.ShoppingApi
+import com.skapps.shoppingapp.utils.succesBasketToast
+import com.skapps.shoppingapp.utils.succesFavoriteToast
 import com.skapps.shoppingapp.utils.succesToast
 import kotlinx.coroutines.launch
 
@@ -33,10 +35,10 @@ class ProductsViewModel : ViewModel() {
     fun addBasketProduct(product:Product,context: Context){
         product.stockQuantity=1
         basketLocalDatabase.addBasket(product,context)
-        context.succesToast("Ürün Sepete Eklendi")
+        context.succesBasketToast()
     }
     fun addFavoriteProduct(product: Product,context: Context){
-        context.succesToast("Favorilere Eklendi")
+        context.succesFavoriteToast()
         favoriteLocalDatabase.addFavorite(product,context)
     }
 }

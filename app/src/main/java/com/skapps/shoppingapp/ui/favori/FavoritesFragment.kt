@@ -12,6 +12,7 @@ import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.FragmentFavoriBinding
 import com.skapps.shoppingapp.ui.favori.adapter.FavoritesProductAdapter
 import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
+import com.skapps.shoppingapp.utils.succesBasketToast
 import com.skapps.shoppingapp.utils.succesToast
 import com.skapps.shoppingapp.utils.toast
 
@@ -40,7 +41,7 @@ class FavoritesFragment : Fragment() {
                         viewModel.delete(product, requireContext())
                     }
                     FavoriteClickType.BUY -> {
-                        requireContext().succesToast("Sepete Eklendi ")
+                        requireContext().succesBasketToast()
                         viewModel.addBasketFavorite(product, requireContext())
                     }
                     else -> {

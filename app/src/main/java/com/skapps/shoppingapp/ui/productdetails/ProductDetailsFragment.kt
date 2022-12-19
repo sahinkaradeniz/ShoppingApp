@@ -101,7 +101,11 @@ class ProductDetailsFragment : Fragment() {
         }
         binding.addBasketButton.setOnClickListener{
             viewModel.addBasketProduct(requireContext())
-            requireContext().succesToast("Sepete Eklendi")
+            requireContext().succesBasketToast()
+        }
+        binding.addFavoriteButton.setOnClickListener {
+            viewModel.addFavoriteProdut(requireContext())
+            requireContext().succesFavoriteToast()
         }
     }
 

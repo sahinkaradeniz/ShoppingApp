@@ -12,6 +12,8 @@ import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
 import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
+import com.skapps.shoppingapp.utils.succesBasketToast
+import com.skapps.shoppingapp.utils.succesFavoriteToast
 import com.skapps.shoppingapp.utils.succesToast
 
 class HomeParentRcvAdapter(private var productList: List<Category>,private var onItemClick: (category:Category,click: HomeClickType) -> Unit) :
@@ -27,7 +29,7 @@ class HomeParentRcvAdapter(private var productList: List<Category>,private var o
                     HomeClickType.BUYBUTTON ->{
                         product.stockQuantity=1
                         basketLocalDatabase.addBasket(product,binding.root.context)
-                        binding.root.context.succesToast("Ürün Sepete Eklendi")
+                        binding.root.context.succesBasketToast()
                     }
                     HomeClickType.IMAGE -> {
                         val bundle = Bundle()
@@ -36,7 +38,7 @@ class HomeParentRcvAdapter(private var productList: List<Category>,private var o
                             bundle)
                     }
                     HomeClickType.FAVORİ ->{
-                        binding.root.context.succesToast("Favorilere Eklendi")
+                        binding.root.context.succesFavoriteToast()
                         favoriteLocalDatabase.addFavorite(product,binding.root.context)
                     }
                     else -> {
