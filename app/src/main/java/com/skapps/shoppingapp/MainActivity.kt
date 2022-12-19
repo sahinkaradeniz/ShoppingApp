@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             binding.bottomNavigationView.visibility =
                 if (destination.id == R.id.productDetailsFragment || destination.id == R.id.searchFragment || destination.id == R.id.splashFragment
-                    || destination.id == R.id.historyPurchaseFragment|| destination.id==R.id.purchaseFragment|| destination.id==R.id.commentProductFragment) {
+                    || destination.id == R.id.historyPurchaseFragment|| destination.id==R.id.purchaseFragment || destination.id==R.id.commentProductFragment ) {
                     View.GONE
                 } else {
                     View.VISIBLE
