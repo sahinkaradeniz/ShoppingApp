@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.remote.ShoppingApi
 import com.skapps.shoppingapp.data.responce.PurchaseResponce
-import com.skapps.shoppingapp.ui.purchaseHistory.adapter.PurchaseAdapterList
+import com.skapps.shoppingapp.data.model.PurchaseAdapterList
 import kotlinx.coroutines.launch
 
 class HistoryPurchaseViewModel : ViewModel() {

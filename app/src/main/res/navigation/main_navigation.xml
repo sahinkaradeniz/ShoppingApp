@@ -74,7 +74,8 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.skapps.shoppingapp.ui.cart.CartFragment"
-        android:label="CartFragment" >
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -85,7 +86,8 @@
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.skapps.shoppingapp.ui.productdetails.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" >
+        android:label="ProductDetailsFragment"
+        tools:layout="@layout/fragment_product_details">
         <action
             android:id="@+id/action_productDetailsFragment_to_commentDetailsFragment"
             app:destination="@id/commentDetailsFragment" />
@@ -99,7 +101,8 @@
     <fragment
         android:id="@+id/commentDetailsFragment"
         android:name="com.skapps.shoppingapp.ui.commentDetails.CommentDetailsFragment"
-        android:label="CommentDetailsFragment" />
+        android:label="CommentDetailsFragment"
+        tools:layout="@layout/fragment_comment_details"/>
     <fragment
         android:id="@+id/productFeaturesFragment"
         android:name="com.skapps.shoppingapp.ui.productFeatures.ProductFeaturesFragment"
@@ -108,11 +111,13 @@
     <fragment
         android:id="@+id/productDescriptionFragment"
         android:name="com.skapps.shoppingapp.ui.productDescription.ProductDescriptionFragment"
-        android:label="ProductDescriptionFragment" />
+        android:label="ProductDescriptionFragment"
+        tools:layout="@layout/fragment_product_description"/>
     <fragment
         android:id="@+id/favoriFragment"
         android:name="com.skapps.shoppingapp.ui.favori.FavoritesFragment"
-        android:label="FavoriFragment" >
+        android:label="FavoriFragment"
+        tools:layout="@layout/fragment_favori">
         <action
             android:id="@+id/action_favoriFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -138,7 +143,8 @@
     <dialog
         android:id="@+id/walletDialogFragment"
         android:name="com.skapps.shoppingapp.ui.wallet.WalletDialogFragment"
-        android:label="WalletDialogFragment" />
+        android:label="WalletDialogFragment"
+        tools:layout="@layout/fragment_wallet"/>
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.skapps.shoppingapp.ui.products.ProductsFragment"
@@ -162,7 +168,8 @@
     <fragment
         android:id="@+id/historyPurchaseFragment"
         android:name="com.skapps.shoppingapp.ui.purchaseHistory.HistoryPurchaseFragment"
-        android:label="HistoryPurchaseFragment" >
+        android:label="HistoryPurchaseFragment"
+        tools:layout="@layout/fragment_history_purchase">
         <action
             android:id="@+id/action_historyPurchaseFragment_to_commentProductFragment"
             app:destination="@id/commentProductFragment" />
@@ -170,5 +177,6 @@
     <fragment
         android:id="@+id/commentProductFragment"
         android:name="com.skapps.shoppingapp.ui.commentToProduct.CommentProductFragment"
-        android:label="CommentProductFragment" />
+        android:label="CommentProductFragment"
+        tools:layout="@layout/fragment_comment_product"/>
 </navigation>

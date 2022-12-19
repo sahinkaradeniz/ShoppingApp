@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.ui.purchaseHistory.adapter
+package com.skapps.shoppingapp.data.model
 
 import com.google.gson.annotations.SerializedName
 import com.skapps.shoppingapp.data.model.Product

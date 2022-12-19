@@ -17,7 +17,7 @@ class HistoryParentAdapter(private val list: List<PurchaseResponce>) :
         fun bind(purchaseAdapterList:PurchaseResponce) {
             val childAdapter = HistoryChildAdapter(purchaseAdapterList.orderedProducts){
                 val bundle = Bundle()
-                bundle.putSerializable("comment",it.productId)
+                bundle.putSerializable("product",it.productId)
                 Navigation.findNavController(binding.root).navigate(R.id.action_historyPurchaseFragment_to_commentProductFragment,
                     bundle)
             }

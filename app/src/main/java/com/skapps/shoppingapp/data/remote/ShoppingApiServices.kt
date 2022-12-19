@@ -36,4 +36,5 @@ interface ShoppingApiService{
 
     @POST("/v1/customer/1/comment/{productId}")
     suspend fun makeCommentProduct(@Path("productId") id :Int,@Body comment:CommentResponce)
+
 }
