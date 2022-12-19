@@ -97,7 +97,7 @@ class PurchaseFragment : Fragment() {
                     binding.basketBuyButton.isClickable=true
                     binding.textComplateView.text="Sipariş Tamamlandı."
                     binding.spinProggres.hide()
-                    requireContext().succesAlert("Sipariş Tamamlandı","Tamam")
+                 //   requireContext().succesAlert("Sipariş Tamamlandı","Tamam")
 
                     viewModel.deleteBasket(requireContext())
                     findNavController().navigate(R.id.action_purchaseFragment_to_historyPurchaseFragment)

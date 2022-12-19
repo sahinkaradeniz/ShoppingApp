@@ -23,7 +23,8 @@ class CartBasketAdapter(
             binding.productNameBasket.text = product.description
             binding.basketTotalPrice.text = price
             binding.imageView4.downloadImage(product.imageUuid)
-            binding.bvPieceText.text = product.stockQuantity.toString()
+            binding.basketView.setPiece(product.stockQuantity!!)
+        //    binding.bvPieceText.text = product.stockQuantity.toString()
         }
     }
 
@@ -54,15 +55,22 @@ class CartBasketAdapter(
                 onItemClick(basketList.get(position),
                     CartClickType.PRODUCT)
             }
-            bvAddButton.setOnClickListener {
+            basketView.addButtonclickListener{
+                onItemClick(basketList.get(position), CartClickType.ADD)
+            }
+            basketView.deleteButtonClickListener {
+                onItemClick(basketList.get(position), CartClickType.REDUCTION)
+            }
+            /*bvAddButton.setOnClickListener {
                 onItemClick(basketList.get(position), CartClickType.ADD)
             }
             bvDeleteButton.setOnClickListener {
                 onItemClick(basketList.get(position), CartClickType.REDUCTION)
-            }
+            }*/
             deleteButton.setOnClickListener {   onItemClick(basketList.get(position), CartClickType.DELETE) }
         }
     }
+
 
     override fun getItemCount(): Int {
         return basketList.size

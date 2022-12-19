@@ -9,6 +9,7 @@ import java.io.Serializable
 
 @Entity(tableName = "favorite")
 data class Favorite (
+    @PrimaryKey
     @ColumnInfo(name="id")
     @SerializedName("id")
     var id: Int?= null,
@@ -42,7 +43,4 @@ data class Favorite (
     @ColumnInfo(name = "status")
     @SerializedName("status" )
     var status : String? = null
-) : Serializable {
-    @PrimaryKey(autoGenerate = true)
-    var roomid=0
-}
+) : Serializable

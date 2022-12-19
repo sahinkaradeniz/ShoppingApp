@@ -23,9 +23,18 @@ class BasketView @JvmOverloads constructor(
     private var piece:Int=0
     var listener:BasketViewListener? = null
 
-    fun setBasketViewListener(listener: BasketViewListener) {
-        this.listener = listener
+
+    fun addButtonclickListener(addonclick:(view:View)->Unit) {
+        binding.bvAddButton.setOnClickListener {
+            addonclick.invoke(it)
+        }
     }
+    fun deleteButtonClickListener(deleteonclick: (view: View) -> Unit){
+        binding.bvDeleteButton.setOnClickListener {
+            deleteonclick.invoke(it)
+        }
+    }
+
 
     init {
         binding.root.id=View.generateViewId()
@@ -33,14 +42,6 @@ class BasketView @JvmOverloads constructor(
             piece = getInt(R.styleable.BasketView_bv_updatePiece, 0)
             recycle()
             setPiece(piece)
-        }
-        binding.apply {
-            bvDeleteButton.setOnClickListener {
-                deleteOnePiece()
-            }
-            bvAddButton.setOnClickListener{
-                addOnePiece()
-            }
         }
     }
 

@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         }
         observeLiveData()
     }
+
     private fun observeLiveData(){
         viewModel.products.observe(viewLifecycleOwner) {
             binding.rcvHome.apply {

@@ -5,7 +5,7 @@ import com.skapps.shoppingapp.data.model.Product
 
 @Dao
 interface BasketDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun insertProduct(product: Product)
 
     @Query("Select * from basketdatabase")
