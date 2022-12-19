@@ -1,9 +1,12 @@
 package com.skapps.shoppingapp.ui.purchaseHistory.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.data.responce.PurchaseResponce
 import com.skapps.shoppingapp.databinding.RowParentHistoryPurchaseBinding
 
@@ -12,11 +15,15 @@ class HistoryParentAdapter(private val list: List<PurchaseResponce>) :
     class ParentViewHolder(private val binding: RowParentHistoryPurchaseBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(purchaseAdapterList:PurchaseResponce) {
-            val childAdapter = HistoryChildAdapter(purchaseAdapterList.orderedProducts)
+            val childAdapter = HistoryChildAdapter(purchaseAdapterList.orderedProducts){
+                val bundle = Bundle()
+                bundle.putSerializable("comment",it.productId)
+                Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
+                    bundle)
+            }
             binding.textView19.text = "Sipariş No : ${purchaseAdapterList.id}"
             binding.rcvHistoryParent.adapter = childAdapter
-            binding.rcvHistoryParent.layoutManager =
-                LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+            binding.rcvHistoryParent.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
