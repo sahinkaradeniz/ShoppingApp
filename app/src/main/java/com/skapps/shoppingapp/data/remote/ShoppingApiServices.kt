@@ -5,6 +5,7 @@ import com.skapps.shoppingapp.data.model.Customer
 import com.skapps.shoppingapp.data.responce.CustomerResponce
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Purchase
+import com.skapps.shoppingapp.data.responce.CommentResponce
 import com.skapps.shoppingapp.data.responce.PurchaseResponce
 import retrofit2.http.*
 
@@ -32,4 +33,7 @@ interface ShoppingApiService{
 
     @GET("/v1/customer/{customerId}/purchase")
     suspend fun getAllPurchases(@Path("customerId") id:Int):List<PurchaseResponce>
+
+    @POST("/v1/customer/1/comment/{productId}")
+    suspend fun makeCommentProduct(@Path("productId") id :Int,@Body comment:CommentResponce)
 }
