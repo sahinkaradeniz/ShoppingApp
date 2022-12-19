@@ -162,5 +162,13 @@
     <fragment
         android:id="@+id/historyPurchaseFragment"
         android:name="com.skapps.shoppingapp.ui.purchaseHistory.HistoryPurchaseFragment"
-        android:label="HistoryPurchaseFragment" />
+        android:label="HistoryPurchaseFragment" >
+        <action
+            android:id="@+id/action_historyPurchaseFragment_to_commentProductFragment"
+            app:destination="@id/commentProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentProductFragment"
+        android:name="com.skapps.shoppingapp.ui.commentToProduct.CommentProductFragment"
+        android:label="CommentProductFragment" />
 </navigation>

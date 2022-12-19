@@ -18,7 +18,7 @@ class HistoryParentAdapter(private val list: List<PurchaseResponce>) :
             val childAdapter = HistoryChildAdapter(purchaseAdapterList.orderedProducts){
                 val bundle = Bundle()
                 bundle.putSerializable("comment",it.productId)
-                Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_productDetailsFragment,
+                Navigation.findNavController(binding.root).navigate(R.id.action_historyPurchaseFragment_to_commentProductFragment,
                     bundle)
             }
             binding.textView19.text = "Sipariş No : ${purchaseAdapterList.id}"

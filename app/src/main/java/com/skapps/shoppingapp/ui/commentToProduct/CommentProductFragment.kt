@@ -23,10 +23,9 @@ class CommentProductFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_comment_product, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CommentProductViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
