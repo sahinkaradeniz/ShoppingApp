@@ -1,5 +1,11 @@
 package com.skapps.shoppingapp.data.model
 
-data class Comment(var id:String,var userID:String,var username:String,var comment:String, var rating: String) {
+import com.google.gson.annotations.SerializedName
 
-}
+data class Comment(
+    @SerializedName("id"      ) var id      : Int?    = null,
+    @SerializedName("header"  ) var userName : String? = null,
+    @SerializedName("content" ) var content : String? = null,
+    @SerializedName("rating"  ) var rating  : Int?    = null,
+    @SerializedName("status"  ) var status  : String? = null
+)
