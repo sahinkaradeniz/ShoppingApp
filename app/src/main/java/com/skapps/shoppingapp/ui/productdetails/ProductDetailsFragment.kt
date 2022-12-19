@@ -1,17 +1,15 @@
 package com.skapps.shoppingapp.ui.productdetails
 
-import android.R.attr.defaultValue
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.adapter.ProductCommentAdapter
+import com.skapps.shoppingapp.ui.productdetails.adapter.ProductCommentAdapter
 import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.databinding.FragmentProductDetailsBinding
 import com.skapps.shoppingapp.utils.*
@@ -21,7 +19,7 @@ class ProductDetailsFragment : Fragment() {
     private var productId:Int=0
     private lateinit var viewModel: ProductDetailsViewModel
     private lateinit var binding: FragmentProductDetailsBinding
-    private lateinit var rcvAdapter:ProductCommentAdapter
+    private lateinit var rcvAdapter: ProductCommentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +44,13 @@ class ProductDetailsFragment : Fragment() {
     private fun observeLiveData(){
         viewModel.commentList.observe(viewLifecycleOwner){
             binding.rcvProductComment.apply {
-                rcvAdapter=ProductCommentAdapter(1,it){ comment ->
-                    Toast.makeText(requireContext(),"Tık",Toast.LENGTH_SHORT).show()
+                rcvAdapter= ProductCommentAdapter(1,it){ comment ->
+                //    Toast.makeText(requireContext(),"Tık",Toast.LENGTH_SHORT).show()
                 }
                 adapter=rcvAdapter
                 layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
                 setHasFixedSize(true)
+                binding.productCommentQuantitiy.text= "${it.size} Değerlendirme"
             }
         }
         viewModel.detailsProduct.observe(viewLifecycleOwner){ product ->
@@ -80,12 +79,13 @@ class ProductDetailsFragment : Fragment() {
                     binding.contrailBottom.hide()
                     binding.scrollView3.hide()
                     requireContext().warningAlert("Bir sorun oluştu internet ayarlarınızı kontrol ediniz.","Tamam")
+                    findNavController().popBackStack()
                 }
             }
         }
     }
     private fun clickFragment(){
-        binding.productCommentText2.setOnClickListener {
+        binding.commentDetailsProduct.setOnClickListener {
             //     val bundle=Bundle()
             //      bundle.putSerializable("productid",product.name)
             //     findNavController().navigate(R.id.action_productDetailsFragment_to_commentDetailsFragment,bundle)
@@ -100,6 +100,7 @@ class ProductDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_productDetailsFragment_to_productDescriptionFragment)
         }
         binding.addBasketButton.setOnClickListener{
+            viewModel.addBasketProduct(requireContext())
             requireContext().succesToast("Sepete Eklendi")
         }
     }

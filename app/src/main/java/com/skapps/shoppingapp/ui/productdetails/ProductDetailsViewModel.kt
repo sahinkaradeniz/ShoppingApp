@@ -1,10 +1,12 @@
 package com.skapps.shoppingapp.ui.productdetails
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
 import com.skapps.shoppingapp.data.model.Comment
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.remote.status.ApiStatus
@@ -22,6 +24,7 @@ class ProductDetailsViewModel: ViewModel() {
    private var _status=MutableLiveData<ApiStatus>()
    val  status:LiveData<ApiStatus>
    get() = _status
+   private val basketDatabase=BasketLocalDatabase()
 
    fun getProduct(productId:Int){
       viewModelScope.launch {
@@ -35,5 +38,16 @@ class ProductDetailsViewModel: ViewModel() {
           }
       }
    }
+    fun addBasketProduct(context: Context){
+        viewModelScope.launch {
+            try {
+                _detailsProduct.value?.let {
+                    it.stockQuantity=1
+                    basketDatabase.addBasket(it, context) }
+            }catch (e:Exception){
+                Log.e("Product Details ViewModel","Add basket Product $e")
+            }
+        }
+    }
 
 }

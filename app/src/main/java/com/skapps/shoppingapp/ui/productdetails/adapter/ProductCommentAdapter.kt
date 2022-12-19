@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.adapter
+package com.skapps.shoppingapp.ui.productdetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,7 +23,6 @@ class ProductCommentAdapter(val type:Int,val commentList:ArrayList<Comment>,priv
         holder.itemView.setOnClickListener {
             onItemClick(commentList.get(position))
         }
-
     }
     override fun getItemCount(): Int {
         if (type==1){
@@ -35,7 +34,5 @@ class ProductCommentAdapter(val type:Int,val commentList:ArrayList<Comment>,priv
         }else{
             return commentList.size
         }
-
     }
-
 }

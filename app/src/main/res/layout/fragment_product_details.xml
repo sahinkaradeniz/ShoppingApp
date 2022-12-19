@@ -167,7 +167,7 @@
                         android:id="@+id/product_destcription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/test_string_ayakkabi"
                         app:layout_constraintStart_toStartOf="@+id/product_brand"
                         app:layout_constraintTop_toBottomOf="@+id/product_brand">
@@ -178,6 +178,7 @@
                         android:id="@+id/cardView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         app:cardCornerRadius="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -220,7 +221,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/product_comment_text_size"
+                        android:id="@+id/product_comment_quantitiy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
@@ -346,33 +347,24 @@
 
                     </TextView>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView6"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/comment_details_product"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginBottom="8dp"
-                        app:cardCornerRadius="16dp"
+                        app:cornerRadius="12dp"
+                        android:backgroundTint="@color/white"
+                        android:text="Tüm Yorumlar"
+                        android:textColor="@color/colorPrimary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/rcvProductComment">
 
-                        <TextView
-                            android:id="@+id/product_comment_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Tüm Yorumlar"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.button.MaterialButton>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcvProductComment"

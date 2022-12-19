@@ -9,14 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.adapter.ProductCommentAdapter
+import com.skapps.shoppingapp.ui.productdetails.adapter.ProductCommentAdapter
 import com.skapps.shoppingapp.databinding.FragmentCommentDetailsBinding
 
 class CommentDetailsFragment : Fragment() {
     private lateinit var binding:FragmentCommentDetailsBinding
     private lateinit var viewModel: CommentDetailsViewModel
-    private lateinit var rcvAdapter:ProductCommentAdapter
+    private lateinit var rcvAdapter: ProductCommentAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
