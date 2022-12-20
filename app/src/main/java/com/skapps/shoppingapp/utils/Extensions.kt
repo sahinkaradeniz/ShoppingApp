@@ -123,7 +123,7 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
     }
 }
 fun Number.convertPricetoTL():String{
-    val filterUserPrice:String= "%.2f".format(this)
+    val filterUserPrice:String= "%.2f".format(this.toFloat())
     val p = "${filterUserPrice} TL"
     return p
 }

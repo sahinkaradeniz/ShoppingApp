@@ -43,7 +43,7 @@ class PurchaseViewModel : ViewModel() {
                 _apiStatus.value= ApiStatus.DONE
             }catch (e:Exception){
                 _apiStatus.value= ApiStatus.ERROR
-                Log.e(TAG,this.toString()+e.toString())
+                Log.e(TAG, "get user : $this $e")
             }
         }
     }
@@ -73,7 +73,7 @@ class PurchaseViewModel : ViewModel() {
         if (_productsList.value!!.isNotEmpty()){
             val purchaseProduct=ArrayList<PurchaseProduct>()
             for ( product in _productsList.value!!){
-                val unitprice= product.price?.div(product.stockQuantity!!)
+               val unitprice= product.price?.div(product.stockQuantity!!)
                 val purchase=PurchaseProduct(product.id,product.stockQuantity,unitprice?.toInt(),product.status)
                 purchaseProduct.add(purchase)
             }
@@ -86,7 +86,7 @@ class PurchaseViewModel : ViewModel() {
                 basketRepository.deleteAllBasket(context)
                 getAllBasketList(context)
             }catch (e:Exception){
-                Log.e(TAG,e.message.toString())
+                Log.e(TAG,"delete basket "+e.message.toString())
             }
         }
     }
@@ -100,7 +100,7 @@ class PurchaseViewModel : ViewModel() {
 
             }catch (e:Exception){
                 _purchaseStatus.value= PurchaseStatus.ERROR
-                Log.e(TAG,this@PurchaseViewModel.toString()+e.toString())
+                Log.e(TAG, "purchase product : $e")
             }
         }
     }

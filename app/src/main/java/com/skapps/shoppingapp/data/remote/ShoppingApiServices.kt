@@ -25,7 +25,7 @@ interface ShoppingApiService{
     @PUT("v1/customer/{customerId}")
     suspend fun updateCustomer(@Path("customerId") id:Int, @Body customer: CustomerResponce):Customer
 
-    @POST("/v1/customer/1/purchase")
+    @POST("/v1/customer/2/purchase/")
     suspend fun makepurchase(@Body purchase: Purchase)
 
     @GET("/v1/customer/{customerId}/purchase")

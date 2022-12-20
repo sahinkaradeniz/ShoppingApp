@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_homeFragment_to_historyPurchaseFragment"
             app:destination="@id/historyPurchaseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_self"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -139,6 +142,9 @@
         <action
             android:id="@+id/action_profileFragment_to_walletDialogFragment"
             app:destination="@id/walletDialogFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_historyPurchaseFragment"
+            app:destination="@id/historyPurchaseFragment" />
     </fragment>
     <dialog
         android:id="@+id/walletDialogFragment"

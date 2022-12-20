@@ -31,9 +31,14 @@ class HistoryPurchaseFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HistoryPurchaseViewModel::class.java)
         observeLiveData()
         binding.backCartFragment2.setOnClickListener {
-            findNavController().popBackStack(R.id.cartFragment,false)
+            if (findNavController().popBackStack(R.id.cartFragment,false)){
+                findNavController().popBackStack(R.id.cartFragment,false)
+            }else{
+                findNavController().popBackStack(R.id.homeFragment,false)
+            }
         }
     }
+
    private fun observeLiveData(){
         viewModel.purchaseHistory.observe(viewLifecycleOwner){
             adapter=HistoryParentAdapter(it)

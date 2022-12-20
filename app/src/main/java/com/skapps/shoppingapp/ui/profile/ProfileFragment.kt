@@ -29,6 +29,20 @@ class ProfileFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         observeLiveData()
         viewModel.getCustomer(1)
+        clickFragment()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+
+    private fun observeLiveData(){
+        viewModel.customer.observe(viewLifecycleOwner){ costumer ->
+            binding.settingsname.text=costumer.name
+            binding.settingsmail.text=costumer.email
+            binding.profilePrice.text= costumer.budget!!.convertPricetoTL()
+        }
+    }
+
+    private fun clickFragment(){
         binding.favoriButtonProfile.setOnClickListener {
         }
         binding.backProfile.setOnClickListener {
@@ -44,14 +58,8 @@ class ProfileFragment : Fragment() {
         binding.moneyButton.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_walletDialogFragment)
         }
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    private fun observeLiveData(){
-        viewModel.customer.observe(viewLifecycleOwner){ costumer ->
-            binding.settingsname.text=costumer.name
-            binding.settingsmail.text=costumer.email
-            binding.profilePrice.text= costumer.budget!!.convertPricetoTL()
+        binding.historyButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_historyPurchaseFragment)
         }
     }
 

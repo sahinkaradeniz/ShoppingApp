@@ -13,7 +13,7 @@ import com.skapps.shoppingapp.utils.convertPricetoTL
 class HistoryChildAdapter(private val productList: List<ProductResponce>,val onItemClick:(ProductResponce)-> Unit):RecyclerView.Adapter<HistoryChildAdapter.ChildViewHolder>() {
     class ChildViewHolder( val binding:RowChildHistoryPurchaseBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(productResponce:ProductResponce){
-                    binding.productNameHistory.text="Ürün kodu : ${productResponce.id}"
+                    binding.productNameHistory.text="Ürün kodu : ${productResponce.productId}"
                     binding.productPriceHistory.text="Ürün fiyatı : ${productResponce.unitPrice?.convertPricetoTL()}"
                     binding.productQuantitiyHistory.text="Alınan Ürün Adedi : ${productResponce.quantity}"
                     binding.productQuantitiyHistory2.text="Satış Durumu : ${productResponce.status}"
