@@ -5,11 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowCategoryRightBinding
 import com.skapps.shoppingapp.data.model.Category
-import com.skapps.shoppingapp.data.model.Favorite
-import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
-import com.skapps.shoppingapp.utils.downloadFromUrl
 import com.skapps.shoppingapp.utils.downloadImage
-import com.skapps.shoppingapp.utils.placeholderProgressBar
 
 class CategoryRightAdapter(private var categorylist:List<Category>, var onItemClick: (category:Category) -> Unit):RecyclerView.Adapter<CategoryRightAdapter.RightViewHolder>(){
     class RightViewHolder(private val binding:RowCategoryRightBinding):RecyclerView.ViewHolder(binding.root){

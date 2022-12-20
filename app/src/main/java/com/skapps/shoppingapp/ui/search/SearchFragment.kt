@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.shoppingapp.ui.search.adapter.SearchHistoryRcvAdapter
 import com.skapps.shoppingapp.ui.search.adapter.SearchProductAdapter
 import com.skapps.shoppingapp.databinding.FragmentSearchBinding
-import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.utils.customView.enums.HistoryClickType
+import com.skapps.shoppingapp.utils.enums.HistoryClickType
 
 class SearchFragment : Fragment() {
 

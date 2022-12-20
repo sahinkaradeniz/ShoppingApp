@@ -7,28 +7,27 @@ import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
-import com.skapps.shoppingapp.data.local.localDatabase.FavoriteLocalDatabase
+import com.skapps.shoppingapp.data.local.repository.BasketRepository
+import com.skapps.shoppingapp.data.local.repository.FavoriteRepository
 import com.skapps.shoppingapp.data.model.Category
 import com.skapps.shoppingapp.databinding.RowParentHomeBinding
-import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
+import com.skapps.shoppingapp.utils.enums.HomeClickType
 import com.skapps.shoppingapp.utils.succesBasketToast
 import com.skapps.shoppingapp.utils.succesFavoriteToast
-import com.skapps.shoppingapp.utils.succesToast
 
 class HomeParentRcvAdapter(private var productList: List<Category>,private var onItemClick: (category:Category,click: HomeClickType) -> Unit) :
     RecyclerView.Adapter<HomeParentRcvAdapter.HomeParentViewHolder>() {
 
     class HomeParentViewHolder(val binding: RowParentHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
-            val basketLocalDatabase= BasketLocalDatabase()
-            val favoriteLocalDatabase= FavoriteLocalDatabase()
+            val basketRepository= BasketRepository()
+            val favoriteRepository= FavoriteRepository()
             binding.parentText.text = category.categoryName
             val childRcvAdapter = HomeChildRcvAdapter(category.products) { product, click ->
                 when (click) {
                     HomeClickType.BUYBUTTON ->{
                         product.stockQuantity=1
-                        basketLocalDatabase.addBasket(product,binding.root.context)
+                        basketRepository.addBasket(product,binding.root.context)
                         binding.root.context.succesBasketToast()
                     }
                     HomeClickType.IMAGE -> {
@@ -39,7 +38,7 @@ class HomeParentRcvAdapter(private var productList: List<Category>,private var o
                     }
                     HomeClickType.FAVORİ ->{
                         binding.root.context.succesFavoriteToast()
-                        favoriteLocalDatabase.addFavorite(product,binding.root.context)
+                        favoriteRepository.addFavorite(product,binding.root.context)
                     }
                     else -> {
                         val bundle = Bundle()

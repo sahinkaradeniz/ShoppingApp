@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Favorite
-import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowFavoritesCardBinding
 import com.skapps.shoppingapp.utils.convertPricetoTL
-import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
-import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
+import com.skapps.shoppingapp.utils.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
 class FavoritesProductAdapter(private val productList:List<Favorite>, var onItemClick: (product:Favorite, click:FavoriteClickType) -> Unit):RecyclerView.Adapter<FavoritesProductAdapter.FavoritesViewHolder>() {

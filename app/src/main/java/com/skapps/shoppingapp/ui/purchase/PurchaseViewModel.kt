@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.skapps.shoppingapp.data.local.localDatabase.BasketLocalDatabase
+import com.skapps.shoppingapp.data.local.repository.BasketRepository
 import com.skapps.shoppingapp.data.model.Customer
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Purchase
@@ -29,7 +29,7 @@ class PurchaseViewModel : ViewModel() {
     val productQuantity:LiveData<Int> get() = _productQuantity
     private var _purchaseStatus= MutableLiveData<PurchaseStatus>()
     val purchaseStatus:LiveData<PurchaseStatus> get() = _purchaseStatus
-    private val basketLocalDatabase= BasketLocalDatabase()
+    private val basketRepository= BasketRepository()
     private val TAG="Purchase View Model"
     private val purchases=Purchase(1, listOf(),"ACTIVE")
 
@@ -49,7 +49,7 @@ class PurchaseViewModel : ViewModel() {
     }
    fun getAllBasketList(context: Context){
         viewModelScope.launch {
-            _productsList.value=basketLocalDatabase.getAllBasket(context)
+            _productsList.value=basketRepository.getAllBasket(context)
             getTotalPrice()
             getProductQuantity()
             getUser(1)
@@ -58,13 +58,13 @@ class PurchaseViewModel : ViewModel() {
     }
     private fun getTotalPrice(){
         viewModelScope.launch {
-            _totalPrice.value= _productsList.value?.let { basketLocalDatabase.getBasketTotalPrice(it) }
+            _totalPrice.value= _productsList.value?.let { basketRepository.getBasketTotalPrice(it) }
         }
     }
     private fun getProductQuantity(){
         viewModelScope.launch {
             _productQuantity.value= _productsList.value?.let {
-                basketLocalDatabase.getBasketProductSize(it)
+                basketRepository.getBasketProductSize(it)
             }
         }
     }
@@ -83,7 +83,7 @@ class PurchaseViewModel : ViewModel() {
      fun deleteBasket(context: Context){
         viewModelScope.launch {
             try {
-                basketLocalDatabase.deleteAllBasket(context)
+                basketRepository.deleteAllBasket(context)
                 getAllBasketList(context)
             }catch (e:Exception){
                 Log.e(TAG,e.message.toString())

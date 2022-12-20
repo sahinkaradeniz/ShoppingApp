@@ -14,8 +14,7 @@ import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.ui.cart.adapter.CartBasketAdapter
 import com.skapps.shoppingapp.databinding.FragmentCartBinding
 import com.skapps.shoppingapp.utils.convertPricetoTL
-import com.skapps.shoppingapp.utils.customView.enums.CartClickType
-import com.skapps.shoppingapp.utils.toast
+import com.skapps.shoppingapp.utils.enums.CartClickType
 import com.skapps.shoppingapp.utils.warningAlert
 
 class CartFragment : Fragment() {

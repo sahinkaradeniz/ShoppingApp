@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.RowCartDesignBinding
 import com.skapps.shoppingapp.data.model.Product
-import com.skapps.shoppingapp.utils.customView.enums.CartClickType
+import com.skapps.shoppingapp.utils.enums.CartClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
 class CartBasketAdapter(

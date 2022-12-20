@@ -1,11 +1,11 @@
-package com.skapps.shoppingapp.data.local.localDatabase
+package com.skapps.shoppingapp.data.local.repository
 
 import android.content.Context
 import android.util.Log
 import com.skapps.shoppingapp.data.local.database.SearchDatabase
 import com.skapps.shoppingapp.data.model.Search
 
-class SearchLocalDatabase {
+class SearchRepository {
     private val TAG="Search Local Database"
     private lateinit var searchDatabase: SearchDatabase
 

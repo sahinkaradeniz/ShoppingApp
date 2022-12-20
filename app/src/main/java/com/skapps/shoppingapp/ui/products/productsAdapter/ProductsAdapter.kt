@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowProductCardBinding
 import com.skapps.shoppingapp.utils.convertPricetoTL
-import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
+import com.skapps.shoppingapp.utils.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
 class ProductsAdapter(

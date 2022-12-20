@@ -1,4 +1,4 @@
-package com.skapps.shoppingapp.data.local.localDatabase
+package com.skapps.shoppingapp.data.local.repository
 
 import android.content.Context
 import android.util.Log
@@ -6,7 +6,7 @@ import com.skapps.shoppingapp.data.local.database.FavoriteDatabase
 import com.skapps.shoppingapp.data.model.Favorite
 import com.skapps.shoppingapp.data.model.Product
 
-class FavoriteLocalDatabase {
+class FavoriteRepository {
     private var TAG="FavoriteLocalDatabase"
     private lateinit var favoriteDatabase: FavoriteDatabase
 

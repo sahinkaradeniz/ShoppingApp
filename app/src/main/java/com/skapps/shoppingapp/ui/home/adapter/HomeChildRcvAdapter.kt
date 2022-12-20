@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowChildHomeBinding
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.utils.convertPricetoTL
-import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
+import com.skapps.shoppingapp.utils.enums.HomeClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
 class HomeChildRcvAdapter(

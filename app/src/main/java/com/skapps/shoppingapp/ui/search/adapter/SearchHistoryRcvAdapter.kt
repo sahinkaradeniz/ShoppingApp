@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Search
 import com.skapps.shoppingapp.databinding.RowHistorySearchBinding
-import com.skapps.shoppingapp.utils.customView.enums.HistoryClickType
+import com.skapps.shoppingapp.utils.enums.HistoryClickType
 
 class SearchHistoryRcvAdapter(private var searchList:List<Search>,var onItemClick:(search:Search,click:HistoryClickType) -> Unit):RecyclerView.Adapter<SearchHistoryRcvAdapter.HistoryViewHolder>() {
     class HistoryViewHolder( val binding:RowHistorySearchBinding):RecyclerView.ViewHolder(binding.root) {

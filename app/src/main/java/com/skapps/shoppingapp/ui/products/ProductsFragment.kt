@@ -10,12 +10,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.skapps.shoppingapp.R
-import com.skapps.shoppingapp.databinding.FragmentProductFeaturesBinding
 import com.skapps.shoppingapp.databinding.FragmentProductsBinding
 import com.skapps.shoppingapp.ui.products.productsAdapter.ProductsAdapter
-import com.skapps.shoppingapp.utils.customView.enums.FavoriteClickType
-import com.skapps.shoppingapp.utils.succesToast
-import com.skapps.shoppingapp.utils.toast
+import com.skapps.shoppingapp.utils.enums.FavoriteClickType
 
 class ProductsFragment : Fragment() {
     private lateinit var viewModel: ProductsViewModel

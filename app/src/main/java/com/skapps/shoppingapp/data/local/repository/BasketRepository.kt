@@ -1,11 +1,11 @@
-package com.skapps.shoppingapp.data.local.localDatabase
+package com.skapps.shoppingapp.data.local.repository
 
 import android.content.Context
 import android.util.Log
 import com.skapps.shoppingapp.data.local.database.BasketDatabase
 import com.skapps.shoppingapp.data.model.Product
 
-class BasketLocalDatabase{
+class BasketRepository{
     private lateinit var basketDatabase: BasketDatabase
     private var TAG="BasketLocalDatabase"
 

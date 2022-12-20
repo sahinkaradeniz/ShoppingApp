@@ -13,7 +13,7 @@ import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.FragmentHomeBinding
 import com.skapps.shoppingapp.ui.home.adapter.HomeParentRcvAdapter
 import com.skapps.shoppingapp.utils.DefaultchangeStatusBarColor
-import com.skapps.shoppingapp.utils.customView.enums.HomeClickType
+import com.skapps.shoppingapp.utils.enums.HomeClickType
 
 class HomeFragment : Fragment() {
 
