@@ -33,21 +33,7 @@ class SearchFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         observeLiveData()
         viewModel.gellAllHistory(requireContext())
-        binding.backHome.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        binding.input.setStartIconOnClickListener {
-            val searchText = binding.input.editText?.text.toString()
-            viewModel.addSearch(searchText, requireContext())
-            viewModel.gellAllHistory(requireContext())
-        }
-
-        binding.rcvSearchProduct.apply {
-            searchProductAdapter = SearchProductAdapter(arrayListOf())
-            layoutManager = GridLayoutManager(binding.root.context, 2)
-            adapter = searchProductAdapter
-        }
+        clickFragment()
     }
 
     private fun observeLiveData() {
@@ -67,6 +53,23 @@ class SearchFragment : Fragment() {
                 layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = searchHistoryRcvAdapter
             }
+        }
+    }
+    private fun clickFragment(){
+        binding.backHome.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.input.setStartIconOnClickListener {
+            val searchText = binding.input.editText?.text.toString()
+            viewModel.addSearch(searchText, requireContext())
+            viewModel.gellAllHistory(requireContext())
+        }
+
+        binding.rcvSearchProduct.apply {
+            searchProductAdapter = SearchProductAdapter(arrayListOf())
+            layoutManager = GridLayoutManager(binding.root.context, 2)
+            adapter = searchProductAdapter
         }
     }
 

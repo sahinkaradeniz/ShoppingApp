@@ -16,7 +16,7 @@ class SearchViewModel(): ViewModel() {
 
     fun gellAllHistory(context: Context){
        viewModelScope.launch {
-         _searchHistory.value=  searchRepository.getAllSearchHistory(context)
+         _searchHistory.value=searchRepository.getAllSearchHistory(context)
        }
     }
 

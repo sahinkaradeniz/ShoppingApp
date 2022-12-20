@@ -36,4 +36,7 @@ interface ShoppingApiService{
 
     @GET("/v1/comment/product/{productId}")
     suspend fun getAllCommentsProduct(@Path("productId") id:Int):List<Comment>
+
+    @GET("/v1/product/search/{searchText}")
+    suspend fun elasticSearchProduct(@Path("searchText") text:String):List<Product>
 }
