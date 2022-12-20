@@ -123,18 +123,20 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
     }
 }
 fun Number.convertPricetoTL():String{
-    val p = "${this} TL"
+    val filterUserPrice:String= "%.2f".format(this)
+    val p = "${filterUserPrice} TL"
     return p
 }
 fun ImageView.downloadImage( url:String?) {
-    val imageUrl="http://10.0.14.243:8080/v1/image/$url"
+    val imageUrl="http://10.146.121.252:8080/v1/image/$url"
     this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))
 }
 fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.statusBarColor =getColor(R.color.splashColor)
     WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight
-}fun Activity.DefaultchangeStatusBarColor(isLight: Boolean) {
+}
+fun Activity.DefaultchangeStatusBarColor(isLight: Boolean) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.statusBarColor =getColor(R.color.grey)
     WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = isLight

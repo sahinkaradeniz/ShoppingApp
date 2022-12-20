@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.R
 import com.skapps.shoppingapp.databinding.RowCartDesignBinding
 import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.enums.CartClickType
 import com.skapps.shoppingapp.utils.downloadImage
 
@@ -18,10 +19,9 @@ class CartBasketAdapter(
     class BasketViewHolder(val binding: RowCartDesignBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-            val price = "${product.price} TL"
             binding.brandNameBasket.text = product.brand
             binding.productNameBasket.text = product.description
-            binding.basketTotalPrice.text = price
+            binding.basketTotalPrice.text = product.price?.convertPricetoTL()
             binding.imageView4.downloadImage(product.imageUuid)
             binding.basketView.setPiece(product.stockQuantity!!)
         //    binding.bvPieceText.text = product.stockQuantity.toString()
