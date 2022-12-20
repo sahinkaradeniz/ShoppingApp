@@ -5,14 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowSearchProductBinding
 import com.skapps.shoppingapp.data.model.Product
+import com.skapps.shoppingapp.utils.convertPricetoTL
+import com.skapps.shoppingapp.utils.downloadImage
 
-class SearchProductAdapter(private var productList:ArrayList<Product>):RecyclerView.Adapter<SearchProductAdapter.ProductViewHolder>() {
+class SearchProductAdapter(private var productList:List<Product>):RecyclerView.Adapter<SearchProductAdapter.ProductViewHolder>() {
     class ProductViewHolder(private val binding:RowSearchProductBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product: Product){
-            val price ="${product.price} TL"
-            binding.searchTextPrice.text=price
-            binding.searchTextProductName.text=product.brand
-            binding.searchTextRate.text= product.averageRating?.toString() ?: "Bos"
+            binding.searchTextProductName.text= product.model
+            binding.searchTextRate.text= product.averageRating.toString()
+            binding.searchTextPrice.text = product.price?.convertPricetoTL()
+            binding.searchProductImage.downloadImage(product.imageUuid)
         }
     }
 
