@@ -66,7 +66,7 @@ class SearchFragment : Fragment() {
                 adapter = searchProductAdapter
             }
         }
-   
+
     }
     private fun clickFragment(){
         binding.backHome.setOnClickListener {
