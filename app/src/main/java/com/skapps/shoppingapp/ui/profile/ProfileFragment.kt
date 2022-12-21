@@ -43,7 +43,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun clickFragment(){
-        binding.favoriButtonProfile.setOnClickListener {
+        binding.settingsButtonProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_addAPIFragment)
         }
         binding.backProfile.setOnClickListener {
             findNavController().popBackStack()

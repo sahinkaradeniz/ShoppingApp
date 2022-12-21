@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
+    android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:backgroundTint="@color/white"
@@ -255,14 +255,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
                 <ImageButton
-                    android:id="@+id/favoriButtonProfile"
+                    android:id="@+id/settingsButtonProfile"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@android:color/transparent"
-                    android:src="@drawable/ic_outline_favorite_nav"
+                    android:src="@drawable/ic_round_settings_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -276,7 +276,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/raleway"
-                    android:text="Beğendiklerim"
+                    android:text="Api Adress Değiştir."
                     android:textColor="@color/textcolor"
                     android:textSize="15sp"
                     android:textStyle="bold"

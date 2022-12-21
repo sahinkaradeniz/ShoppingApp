@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
         requireActivity().OrangechangeStatusBarColor(true)
         viewModel.timer.observe(viewLifecycleOwner){
             if (it){
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_addAPIFragment)
             }
         }
     }

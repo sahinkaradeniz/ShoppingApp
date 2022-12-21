@@ -125,7 +125,6 @@ class PurchaseFragment : Fragment() {
             binding.basketQuntText.text = "Ürünler Toplam ($it)"
         }
         viewModel.totalPrice.observe(viewLifecycleOwner) {
-            viewModel.setPrice(it.toInt())
             binding.basketPriceText.text = it.convertPricetoTL()
         }
         viewModel.user.observe(viewLifecycleOwner) { user ->
