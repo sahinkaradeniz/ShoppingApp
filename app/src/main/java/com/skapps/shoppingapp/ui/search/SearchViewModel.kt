@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.skapps.shoppingapp.data.local.repository.BasketRepository
+import com.skapps.shoppingapp.data.local.repository.FavoriteRepository
 import com.skapps.shoppingapp.data.local.repository.SearchRepository
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.data.model.Search
@@ -38,6 +40,19 @@ class SearchViewModel: ViewModel() {
     fun deleteSearch(search: Search,context: Context){
         viewModelScope.launch {
             searchRepository.deleteSearch(search, context)
+        }
+    }
+    fun addBasket(product: Product,context: Context){
+        viewModelScope.launch {
+            val basketRepository= BasketRepository()
+            product.stockQuantity=1
+            basketRepository.addBasket(product, context)
+        }
+    }
+    fun addFavorite(product: Product,context: Context){
+        viewModelScope.launch {
+            val favoriteRepository=FavoriteRepository()
+            favoriteRepository.addFavorite(product, context)
         }
     }
     fun searchProduct(text:String){

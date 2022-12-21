@@ -61,7 +61,7 @@ class ProductDetailsFragment : Fragment() {
                 productBrand.text=product.brand
                 productModel.text=product.model
                 productDestcription.text=product.description
-                productRatingText.text=product.averageRating.toString()
+                productRatingText.text=product.averageRating?.averatingformat1F()
             }
         }
         viewModel.status.observe(viewLifecycleOwner){ status ->

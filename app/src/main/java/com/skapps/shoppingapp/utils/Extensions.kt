@@ -127,8 +127,12 @@ fun Number.convertPricetoTL():String{
     val p = "${filterUserPrice} TL"
     return p
 }
+fun Number.averatingformat1F():String{
+    val filterUserPrice:String= "%.1f".format(this.toFloat())
+    return filterUserPrice
+}
 fun ImageView.downloadImage( url:String?) {
-    val imageUrl="http://10.146.121.252:8080/v1/image/$url"
+    val imageUrl="http://10.125.13.54:8080/v1/image/$url"
     this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))
 }
 fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {

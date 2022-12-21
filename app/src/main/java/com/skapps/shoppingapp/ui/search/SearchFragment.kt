@@ -9,14 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputLayout
+import com.skapps.shoppingapp.R
+import com.skapps.shoppingapp.data.local.repository.BasketRepository
 import com.skapps.shoppingapp.ui.search.adapter.SearchHistoryRcvAdapter
 import com.skapps.shoppingapp.ui.search.adapter.SearchProductAdapter
 import com.skapps.shoppingapp.databinding.FragmentSearchBinding
 import com.skapps.shoppingapp.utils.enums.HistoryClickType
+import com.skapps.shoppingapp.utils.enums.HomeClickType
+import com.skapps.shoppingapp.utils.succesBasketToast
+import com.skapps.shoppingapp.utils.succesFavoriteToast
 import com.skapps.shoppingapp.utils.toast
 
 class SearchFragment : Fragment() {
@@ -61,7 +67,30 @@ class SearchFragment : Fragment() {
         }
         viewModel.productList.observe(viewLifecycleOwner){ productList ->
             binding.rcvSearchProduct.apply {
-                searchProductAdapter = SearchProductAdapter(productList)
+                searchProductAdapter = SearchProductAdapter(productList){ product, clickType ->
+                    when(clickType){
+                        HomeClickType.IMAGE ->{
+                            val bundle = Bundle()
+                            bundle.putSerializable("prod", product.id)
+                            Navigation.findNavController(binding.root).navigate(R.id.action_searchFragment_to_productDetailsFragment,
+                                bundle)
+                        }
+                        HomeClickType.BUYBUTTON ->{
+                           viewModel.addBasket(product,requireContext())
+                           requireContext().succesBasketToast()
+                        }
+                        HomeClickType.FAVORİ -> {
+                            viewModel.addFavorite(product,requireContext())
+                            requireContext().succesFavoriteToast()
+                        }
+                        else -> {
+                            val bundle = Bundle()
+                            bundle.putSerializable("prod", product.id)
+                            Navigation.findNavController(binding.root).navigate(R.id.action_searchFragment_to_productDetailsFragment,
+                                bundle)
+                        }
+                    }
+                }
                 layoutManager = GridLayoutManager(binding.root.context, 2)
                 adapter = searchProductAdapter
             }

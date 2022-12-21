@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.databinding.RowProductCommentBinding
 import com.skapps.shoppingapp.data.model.Comment
+import com.skapps.shoppingapp.utils.averatingformat1F
 
 class ProductCommentAdapter(val type:Int,val commentList:List<Comment>,private val onItemClick: (comment:Comment) -> Unit): RecyclerView.Adapter<ProductCommentAdapter.CommentViewHolder>() {
     class CommentViewHolder(val binding:RowProductCommentBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(comment: Comment){
                 binding.textProductComment.text=comment.content
-                binding.textRatingComment.text=comment.rating.toString()
+                binding.textRatingComment.text=comment.rating?.averatingformat1F()
                 binding.textUsername.text=comment.header
             }
     }

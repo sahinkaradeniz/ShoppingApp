@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skapps.shoppingapp.data.model.Product
 import com.skapps.shoppingapp.databinding.RowProductCardBinding
+import com.skapps.shoppingapp.utils.averatingformat1F
 import com.skapps.shoppingapp.utils.convertPricetoTL
 import com.skapps.shoppingapp.utils.enums.FavoriteClickType
 import com.skapps.shoppingapp.utils.downloadImage
@@ -19,7 +20,7 @@ class ProductsAdapter(
             binding.apply {
                 binding.textPrice.text = product.price?.convertPricetoTL()
                 binding.textProductName.text = product.model
-                binding.textRate.text = product.averageRating.toString()
+                binding.textRate.text = product.averageRating?.averatingformat1F()
                 binding.productImage.downloadImage(product.imageUuid)
             }
         }
