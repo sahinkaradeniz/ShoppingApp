@@ -7,4 +7,4 @@ data class CustomerResponce( @SerializedName("name"        ) var name        : S
                              @SerializedName("email"       ) var email       : String? = null,
                              @SerializedName("phoneNumber" ) var phoneNumber : String? = null,
                              @SerializedName("budget"      ) var budget      : Int?    = null,
-                             @SerializedName("status"      ) var status      : String? = null)
+                             @SerializedName("status"      ) var status      : String? = "ACTIVE")

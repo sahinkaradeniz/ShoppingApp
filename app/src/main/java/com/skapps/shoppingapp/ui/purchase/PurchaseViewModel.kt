@@ -14,6 +14,7 @@ import com.skapps.shoppingapp.data.model.PurchaseProduct
 import com.skapps.shoppingapp.data.remote.status.ApiStatus
 import com.skapps.shoppingapp.data.remote.status.PurchaseStatus
 import com.skapps.shoppingapp.data.remote.ShoppingApi
+import com.skapps.shoppingapp.data.responce.CustomerResponce
 import kotlinx.coroutines.launch
 
 class PurchaseViewModel : ViewModel() {
@@ -29,6 +30,9 @@ class PurchaseViewModel : ViewModel() {
     val productQuantity:LiveData<Int> get() = _productQuantity
     private var _purchaseStatus= MutableLiveData<PurchaseStatus>()
     val purchaseStatus:LiveData<PurchaseStatus> get() = _purchaseStatus
+    private var _walletControl=MutableLiveData<Boolean>()
+    val walletControl : LiveData<Boolean> get() = _walletControl
+    private var price:Int=0
     private val basketRepository= BasketRepository()
     private val TAG="Purchase View Model"
     private val purchases=Purchase(1, listOf(),"ACTIVE")
@@ -61,6 +65,8 @@ class PurchaseViewModel : ViewModel() {
             _totalPrice.value= _productsList.value?.let { basketRepository.getBasketTotalPrice(it) }
         }
     }
+
+
     private fun getProductQuantity(){
         viewModelScope.launch {
             _productQuantity.value= _productsList.value?.let {
@@ -91,18 +97,40 @@ class PurchaseViewModel : ViewModel() {
         }
     }
 
-     fun purchaseProducts(){
+     fun purchaseProducts(context: Context){
         viewModelScope.launch {
-            _purchaseStatus.value= PurchaseStatus.LOADING
-            try {
-                ShoppingApi.retrofitService.makepurchase(purchases)
-                _purchaseStatus.value= PurchaseStatus.DONE
+            _walletControl.value= _totalPrice.value?.let { walletControl(it.toInt())}
+            if (_walletControl.value!!){
+                _purchaseStatus.value= PurchaseStatus.LOADING
+                try {
+                    val  p =basketRepository.getTotalPrice(context)
+                    ShoppingApi.retrofitService.makepurchase(purchases)
+                    deleteMoneyCustomer(p.toInt())
+                    _purchaseStatus.value= PurchaseStatus.DONE
 
-            }catch (e:Exception){
-                _purchaseStatus.value= PurchaseStatus.ERROR
-                Log.e(TAG, "purchase product : $e")
+                }catch (e:Exception){
+                    _purchaseStatus.value= PurchaseStatus.ERROR
+                    Log.e(TAG, "purchase product : $e")
+                }
             }
         }
     }
-
+   private fun walletControl(price:Int):Boolean{
+       val bugdet =_user.value?.budget!!
+       return bugdet>= price
+    }
+    fun deleteMoneyCustomer(money:Int){
+        viewModelScope.launch {
+            try {
+                val customer=_user.value!!
+                var customerBudget = customer.budget
+                customerBudget= customerBudget?.minus(money)
+                val c= CustomerResponce(customer.name,customer.surname,customer.email,customer.phoneNumber,customerBudget)
+                _user.value=ShoppingApi.retrofitService.updateCustomer(1,c)
+                getUser(customer.id!!)
+            }catch (e:Exception){
+                Log.e(TAG,e.message.toString())
+            }
+        }
+    }
 }

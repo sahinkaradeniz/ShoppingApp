@@ -27,6 +27,8 @@ class BasketRepository{
 
     }
 
+
+
     fun deleteAllBasket(context: Context){
         try {
             basketDatabase= BasketDatabase.getBookDatabase(context)!!
@@ -78,6 +80,11 @@ class BasketRepository{
             return basketDatabase.getBasketDao().getBasket()
     }
 
+    fun getTotalPrice(context: Context):Number{
+        basketDatabase= BasketDatabase.getBookDatabase(context)!!
+        return  basketDatabase.getBasketDao().getTotalPrice()
+    }
+
     fun getBasketTotalPrice(basketList:List<Product>):Double{
         var totalPrice =0.0
         for (i in basketList){
@@ -85,6 +92,7 @@ class BasketRepository{
         }
         return  totalPrice
     }
+
 
     fun getBasketProductSize(basketList:List<Product>):Int{
         var totalSize=0

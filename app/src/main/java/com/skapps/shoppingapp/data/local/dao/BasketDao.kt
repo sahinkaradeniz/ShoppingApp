@@ -19,4 +19,8 @@ interface BasketDao {
 
      @Update
      fun updateProductBasket(product: Product)
+
+     @Query("SELECT SUM(price) FROM basketdatabase")
+     fun getTotalPrice():Double
+
 }

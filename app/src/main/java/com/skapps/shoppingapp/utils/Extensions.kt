@@ -132,7 +132,7 @@ fun Number.averatingformat1F():String{
     return filterUserPrice
 }
 fun ImageView.downloadImage( url:String?) {
-    val imageUrl="http://10.125.13.54:8080/v1/image/$url"
+    val imageUrl="http://10.125.5.146:8080/v1/image/$url"
     this.downloadFromUrl(imageUrl, placeholderProgressBar(this.context))
 }
 fun Activity.OrangechangeStatusBarColor(isLight: Boolean) {

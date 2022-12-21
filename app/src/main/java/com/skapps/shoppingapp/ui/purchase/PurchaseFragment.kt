@@ -36,11 +36,15 @@ class PurchaseFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(PurchaseViewModel::class.java)
         viewModel.getAllBasketList(requireContext())
         observeLiveData()
+        clickFragment()
+    }
+
+    private fun clickFragment(){
         binding.backCartFragment.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.basketBuyButton.setOnClickListener {
-            viewModel.purchaseProducts()
+                viewModel.purchaseProducts(requireContext())
         }
     }
 
@@ -104,6 +108,13 @@ class PurchaseFragment : Fragment() {
                 }
             }
         }
+        viewModel.walletControl.observe(viewLifecycleOwner){
+            if (it !=null){
+                if (!it){
+                    requireContext().warningToast("Hesap bakiyeniz yetersizdir lütfen yükleme yapınız.")
+                }
+            }
+        }
         viewModel.productsList.observe(viewLifecycleOwner) {
             pruchaseAdapter = PurhaceProductAdapter(it)
             binding.rcvPurchaseFragment.adapter = pruchaseAdapter
@@ -114,6 +125,7 @@ class PurchaseFragment : Fragment() {
             binding.basketQuntText.text = "Ürünler Toplam ($it)"
         }
         viewModel.totalPrice.observe(viewLifecycleOwner) {
+            viewModel.setPrice(it.toInt())
             binding.basketPriceText.text = it.convertPricetoTL()
         }
         viewModel.user.observe(viewLifecycleOwner) { user ->
