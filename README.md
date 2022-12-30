@@ -1,6 +1,6 @@
 ## ShoppingApp
 
-ShoppingApp, kullanıcıların mağazalarda bulunan ürünleri tarama, sepete ekleme ve satın alma işlemlerini gerçekleştirebildiği bir Android uygulamasıdır. Uygulama, MVVM mimarisi ile tasarımı yapılmıştır ve Navigation Component kullanarak sayfalar arası geçişleri sağlar. Ayrıca, Retrofit kullanılarak verilerin API'lerden çekilmesi ve Moshi kullanılarak işlenmesi gerçekleştirilir. Glide kullanılarak ürün görsellerinin yüklenmesi ve gösterilmesi sağlanır. Asenkron işlemler için ise Coroutine kullanılır. Toasty kütüphanesi de kullanılarak çeşitli bilgilendirme mesajları gösterilebilir.
+ShoppingApp, kullanıcıların mağazalarda bulunan ürünleri tarama, sepete ekleme ve satın alma işlemlerini gerçekleştirebildiği bir Android uygulamasıdır. Uygulama, MVVM mimarisi ile tasarımı yapılmıştır ve Navigation Component kullanarak sayfalar arası geçişleri sağlar. Ayrıca, Retrofit kullanılarak verilerin API'lerden çekilmesi ve Moshi kullanılarak işlenmesi gerçekleştirilir. Glide kullanılarak ürün görsellerinin yüklenmesi ve gösterilmesi sağlanır. Asenkron işlemler için ise Coroutine kullanılır. 
 
 ## Özellikler
 
